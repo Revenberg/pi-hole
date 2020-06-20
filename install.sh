@@ -1,5 +1,4 @@
 #!/bin/bash
-cp ./pi-hole/install.sh ~/install.sh
 if [ ! -f "/home/pi/.pswrd" ]; then
     if [ $# -ne 1 ]; then
         echo $0: usage: ./install.sh  password
@@ -34,5 +33,7 @@ fi
 cd ~/pi-hole
 git pull
 cd ~
+
+cp ./pi-hole/install.sh ~/install.sh
 
 ansible-playbook /home/pi/pi-hole/playbook.yml --vault-password-file /home/pi/.pswrd
