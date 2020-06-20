@@ -40,3 +40,7 @@
     state: present
   notify: restart mopidy
 
+- name: Ansible delete apt_mopidy_com.list
+  file:
+    path: /etc/apt/sources.list.d/apt_mopidy_com.list
+    state: absent
