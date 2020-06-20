@@ -6,13 +6,12 @@
   become_user: root
   become: yes
   roles:
-  - { role: general
+  - { role: general,
       become_user: pi }
-  - { role: ntp
+  - { role: ntp,
       become_user: pi }
-  - { role: pi-hole
-      become_user: pi }
-  
+  - { role: pi-hole,
+      become_user: pi }  
   - music
   - zram
   - usbdrive
