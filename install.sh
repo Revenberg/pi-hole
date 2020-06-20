@@ -1,7 +1,12 @@
 #!/bin/bash
 cp ./pi-hole/install.sh ~/install.sh
 if [ ! -f "/home/pi/.pswrd" ]; then
-    echo $passwrd > /home/pi/.pswrd
+    if [ $# -ne 1 ]; then
+        echo $0: usage: ./install.sh  password
+        exit 0
+    fi
+
+    echo $1 > /home/pi/.pswrd
 
     sudo apt-get update
     sudo apt-get autoremove
@@ -21,7 +26,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     echo "$h ansible_host=$i" >> /home/pi/ansible.log
 
     echo "[rpi]" > /home/pi/ansible/hosts
-    echo "$i  ansible_connection=ssh ansible_ssh_user=pi ansible_ssh_pass="$1 >> ~/ansible/hosts
+    echo "$i  ansible_connection=ssh ansible_ssh_user=pi >> ~/ansible/hosts
 
     git clone https://github.com/Revenberg/pi-hole.git
 fi
