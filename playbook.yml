@@ -6,10 +6,8 @@
   become_user: root
   become: yes
   roles:
-  - { role: general,
-      become_user: pi }
-  - { role: ntp,
-      become_user: pi }
+  - general
+  - ntp
   - { role: pi-hole,
       become_user: pi }  
   - music
