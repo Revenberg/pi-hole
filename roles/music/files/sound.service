@@ -1,0 +1,8 @@
+[Unit]
+Description=Sound
+
+[Service]
+ExecStart=/bin/bash /usr/bin/sound.sh
+
+[Install]
+WantedBy=multi-user.target

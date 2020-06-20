@@ -1,1 +1,50 @@
 ---
+- name: Copy sound.sh file with owner and permissions
+  copy:
+    src: sound.sh
+    dest: /usr/bin/sound.sh
+    owner: pi
+    group: pi
+    mode: '0755'
+
+- name: Add a line to a file if the file does not exist, without passing regexp
+  lineinfile:
+    path: "{{ item.file }}"
+    line: "{{ item.line }}"
+    create: yes
+  with_items:
+  - {file: "/etc/security/limits.conf", line: "#New Limits" }
+  - {file: "/etc/security/limits.conf", line: "@audio - rtprio 99" }
+  - {file: "/etc/security/limits.conf", line: "@audio - memlock 512000" }
+  - {file: "/etc/security/limits.conf", line: "@audio - nice -20" }
+  - {file: "/etc/sysctl.d/network-latency.conf", line: "@audio - nice -20" }
+  - {file: "/etc/sysctl.d/network-latency.conf", line: "#New Network Latency" }
+  - {file: "/etc/sysctl.d/network-latency.conf", line: "net.core.rmem_max = 16777216" }
+  - {file: "/etc/sysctl.d/network-latency.conf", line: "net.core.wmem_max = 16777216" }
+
+
+- name: Copy sound.service file with owner and permissions
+  copy:
+    src: sound.service
+    dest: /etc/systemd/system/sound.service
+    owner: pi
+    group: pi
+    mode: '0755'
+
+  wget https://github.com/dynobot/Arch-Linux-Audio-RPi/raw/master/sound.service -O /etc/systemd/system/sound.service
+- name: Copy sound file with owner and permissions
+  copy:
+    src: sound.sh
+    dest: /usr/bin/sound.sh
+    owner: pi
+    group: pi
+    mode: '0755'
+
+- name: enable service httpd and ensure it is not masked
+  systemd:
+    name: sound
+    enabled: yes
+    masked: no
+
+
+

@@ -12,7 +12,8 @@
       become_user: pi }
   - { role: pi-hole
       become_user: pi }
-  - packages
+  
+  - music
   - zram
   - usbdrive
   - hifiberry
