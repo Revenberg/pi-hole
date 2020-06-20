@@ -4,7 +4,7 @@
 - name: Ansible Playbook for configuring Pi-Hole on Raspberry Pi
   hosts: webservers
   roles:
-    - package
+    - general
     - ntp
     - pi-hole
   remote_user: pi
