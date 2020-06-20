@@ -26,7 +26,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     echo "$h ansible_host=$i" >> /home/pi/ansible.log
 
     echo "[rpi]" > /home/pi/ansible/hosts
-    echo "$i  ansible_connection=ssh ansible_ssh_user=pi >> ~/ansible/hosts
+    echo "$i  ansible_connection=ssh ansible_ssh_user=pi" >> ~/ansible/hosts
 
     git clone https://github.com/Revenberg/pi-hole.git
 fi
