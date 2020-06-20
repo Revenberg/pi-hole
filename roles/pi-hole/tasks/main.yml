@@ -16,8 +16,8 @@
   file:
     name="{{ fspath_pihole_config }}"
     state=directory
-#    owner="{{ user_pihole }}"
-#    group="{{ group_pihole }}"
+    owner="{{ user_pihole }}"
+    group="{{ group_pihole }}"
     mode=0755
   tags: pihole
 

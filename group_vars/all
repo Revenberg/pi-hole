@@ -8,6 +8,9 @@ fspath_pihole: "/opt/pihole"
 fspath_pihole_src: "/etc/.pihole"
 fspath_pihole_config: "/etc/pihole"
 
+user_pihole: pi
+group_pihole: pi
+
 gateway_ip: 192.168.1.1
 network_interface: eth0
 ipv4_static: True
