@@ -30,4 +30,4 @@ cd ~/pi-hole
 git pull
 cd ~
 
-ansible-playbook /home/pi/pi-hole/playbook.yaml --vault-password-file /home/pi/.pswrd
+ansible-playbook /home/pi/pi-hole/playbook.yml --vault-password-file /home/pi/.pswrd
