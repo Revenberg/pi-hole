@@ -6,7 +6,7 @@
 
 - name: Mount up device by label
   mount:
-    path: /media/{{ labels }}
+    path: /media/{{ item }}
     src: "LABEL={{ item }}"
     fstype: exfat
     state: mounted
