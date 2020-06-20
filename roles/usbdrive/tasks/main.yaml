@@ -11,4 +11,4 @@
     fstype: exfat
     state: mounted
   with_items: "{{ labels }}"
-  ignore_errors: true
+  ignore_errors: True
