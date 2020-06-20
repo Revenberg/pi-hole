@@ -40,7 +40,7 @@
       path: "{{ build_path }}"
       state: directory
       recurse: yes
-      
+
 - name: Download openssl
   get_url:
       url: "https://www.openssl.org/source/{{ OPEN_SSL }}.tar.gz"
@@ -117,7 +117,7 @@
   register: python_configure
 
 - name: make python
-  shell: make -j 4'
+  shell: 'make -j 4'
   args:
       chdir: "{{ build_path }}/Python-{{ PYTHON }}"
   register: make_python
@@ -150,7 +150,7 @@
         - bricknil
     virtualenv: "{{ HOME }}/.virtualenvs/bricknil"
     virtualenv_python: python3.7
-    
+
 - name: git clone bricknil
   git:
       repo: 'https://github.com/virantha/bricknil.git'
