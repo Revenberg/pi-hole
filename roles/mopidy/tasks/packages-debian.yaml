@@ -1,3 +1,4 @@
+---
 - name: Trust mopidy developer GPG key
   apt_key:
     url: https://apt.mopidy.com/mopidy.gpg
