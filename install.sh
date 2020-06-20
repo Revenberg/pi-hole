@@ -1,12 +1,5 @@
 #!/bin/bash
-if [ $# -ne 1 ]; then
-    echo $0: usage: ./install.sh  password
-    exit 0
-fi
-
 if [ ! -f "/home/pi/.pswrd" ]; then
-    echo "vault password: "
-    read passwrd
     echo $passwrd > /home/pi/.pswrd
 
     sudo apt-get update
