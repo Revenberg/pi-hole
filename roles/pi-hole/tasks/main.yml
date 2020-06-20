@@ -31,15 +31,15 @@
     mode=0644
   tags: pihole
 
-- name: Set static IP configuration
-  become: True
-  template:
-    src="etc_network_interfaces.j2"
-    dest="/etc/network/interfaces"
-    owner=root
-    group=root
-    mode=0644
-  tags: pihole
+#- name: Set static IP configuration
+#  become: True
+#  template:
+#    src="etc_network_interfaces.j2"
+#    dest="/etc/network/interfaces"
+#    owner=root
+#    group=root
+#    mode=0644
+#  tags: pihole
 
 - name: Set default DNS
   become: True
@@ -56,15 +56,15 @@
   register: dbg_install_pihole
   tags: pihole
 
-- name: Set static IP configuration
-  become: True
-  template:
-    src="etc_network_interfaces.j2"
-    dest="/etc/network/interfaces"
-    owner=root
-    group=root
-    mode=0644
-  tags: admin
+#- name: Set static IP configuration
+#  become: True
+#  template:
+#    src="etc_network_interfaces.j2"
+#    dest="/etc/network/interfaces"
+#    owner=root
+#    group=root
+#    mode=0644
+#  tags: admin
 
 - name: Set PiHole to update every week
   become: True
