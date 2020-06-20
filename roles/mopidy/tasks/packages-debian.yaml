@@ -1,0 +1,40 @@
+- name: Trust mopidy developer GPG key
+  apt_key:
+    url: https://apt.mopidy.com/mopidy.gpg
+    state: present
+
+- name: Ensure mopidy repository is available
+  apt_repository:
+    repo: deb http://apt.mopidy.com/ stable main contrib non-free
+    state: present
+
+- name: Update apt cache
+  apt: 
+    update_cache: yes
+    cache_valid_time: 3600
+  changed_when: False
+
+- name: Ensure mopidy is installed
+  apt:
+    name: mopidy
+    state: present
+
+#- name: Install mopidy packages
+#  apt:
+#    name: "{{ mopidy_packages }}"
+#    state: present
+#  notify: restart mopidy
+
+#- name: Start services
+#  service:
+#    name: "{{ item }}"
+#    state: started
+#    enabled: yes
+#  with_items: "{{ mopidy_packages }}"
+
+- name: Install mopidy packages
+  pip:
+    name: "{{ mopidy_pip_packages }}"
+    state: present
+  notify: restart mopidy
+

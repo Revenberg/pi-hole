@@ -1,0 +1,16 @@
+---
+- name: copy file
+  copy:
+    src:  zram.sh
+    dest: /usr/bin/zram.sh
+    mode: 0755
+  notify: reboot
+
+- name: /etc/rc.local"
+  lineinfile:
+    name: /etc/rc.local
+    line: "/usr/bin/zram.sh &"
+    insertbefore: '^exit 0'
+    state: present
+  notify: reboot
+

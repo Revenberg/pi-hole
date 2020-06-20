@@ -2,9 +2,24 @@
 ---
 - name: Ansible Playbook for configuring Pi-Hole on Raspberry Pi
   hosts: localhost
-  roles:
-    - general
-    - ntp
-    - pi-hole
-  remote_user: pi
+#  remote_user: pi
+  become_user: root
   become: yes
+  roles:
+  - { role: general
+      become_user: pi }
+  - { role: ntp
+      become_user: pi }
+  - { role: pi-hole
+      become_user: pi }
+  - packages
+  - zram
+  - usbdrive
+  - hifiberry
+  - { role: nodered,
+      become_user: pi }
+  - mopidy
+  - nginx
+  - hotspot
+  - minidlna
+

@@ -1,0 +1,37 @@
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 80 default_server;
+#    listen [::]:80 default_server;
+#    server_name localhost;
+    
+    # Enable websocket proxying for mopidy
+    location /mopidy/ws {
+                proxy_pass http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:6680/mopidy/ws/;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection upgrade";
+                proxy_read_timeout 604800;
+                proxy_send_timeout 604800;
+    }
+
+    # Redirect requests on port 80 to port 6680
+    location / {
+        proxy_pass http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:6680/;
+        proxy_http_version 1.1;        
+#        rewrite /mopidy/(.*) /mopidy/$1 break;
+#        rewrite /images/(.*) /images/$1 break;
+#        rewrite /iris/(.*) /iris/$1 break;
+#        rewrite /jukepi/(.*) /jukepi/$1 break;
+#        rewrite /mobile/(.*) /mobile/$1 break;
+#        rewrite /settings/(.*) /settings/$1 break;
+#        rewrite /musicbox_webclient/(.*) /musicbox_webclient/$1 break;
+#        rewrite /simple-webclient/(.*) /simple-webclient/$1 break;
+#        rewrite /(.*)/ /$1 break;
+#        proxy_redirect off;
+    }
+
+}

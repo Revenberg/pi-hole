@@ -1,0 +1,12 @@
+- name: Creates directory
+  file:
+    path: /media/ssd
+    state: directory
+
+- name: Mount up device by label
+  mount:
+    path: /media/ssd
+    src: "LABEL={{ label }}"
+    fstype: exfat
+    state: mounted
+

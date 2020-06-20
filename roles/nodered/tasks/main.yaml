@@ -1,0 +1,24 @@
+- name: Copy file with owner and permissions
+  copy:
+    src: update-nodejs-and-nodered.sh
+    dest: /home/pi/update-nodejs-and-nodered.sh
+    owner: pi
+    group: pi
+    mode: '0755'
+
+- name: check if rules file exists
+  stat: 
+    path: /home/pi/.node-red
+  register: stat_result
+
+- name: install node-RED
+  command: "/home/pi/update-nodejs-and-nodered.sh"
+  when: stat_result.stat.exists == False
+
+- name: "systemctl enable nodered.service"
+  systemd:
+    state: started
+    enabled: yes
+    name: nodered
+  become_user: root
+  when: stat_result.stat.exists == False

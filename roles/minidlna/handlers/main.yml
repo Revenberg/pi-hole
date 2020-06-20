@@ -1,0 +1,10 @@
+---
+- name: restart minidlna
+  service: 
+    name: minidlna 
+    state: restarted
+
+- name: reload minidlna
+  service: 
+    name: minidlna 
+    state: reloaded

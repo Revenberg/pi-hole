@@ -1,0 +1,44 @@
+- include: packages.yaml
+
+- name: "Ensure /boot/config.txt contains lines"
+  lineinfile:
+    name: /boot/config.txt
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "dtparam=i2s=on
+    - "dtoverlay=hifiberry-dac"
+  notify: reboot
+
+- name: "Ensure /boot/config.txt comment out"
+  replace:
+    path: /boot/config.txt
+    regexp: '^dtparam=audio=on'
+    replace: '#dtparam=audio=on'
+  notify: reboot
+
+- name: "Ensure /etc/modules contains lines"
+  lineinfile:
+    name: /etc/modules
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "snd_soc_bcm2708"
+    - "bcm2708_dmaengine"
+    - "snd_soc_pcm512x"
+    - "snd_soc_hifiberry_dacplus"
+  notify: reboot
+
+- name: "copy asound.conf"
+  copy:
+    src: asound.conf
+    dest: /etc/asound.conf
+
+#- name: "set time to RTC"
+#  lineinfile:
+#    name: /sys/class/i2c-adapter/i2c-1/new_device
+#    line: "ds1307 0x68"
+
+#- name: "write value"
+#  command: "hwclock -w"
+

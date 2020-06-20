@@ -1,0 +1,70 @@
+---
+- name: check if rules file exists
+  stat:
+    path: /etc/mopidy/mopidy.conf
+  register: stat_result
+
+- include: packages.yaml
+
+- name: stop service if running
+  systemd:
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  with_items:
+    - hostapd
+    - dnsmasq
+
+- name: copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}"
+  with_items: 
+   - { src: "hostapd.conf", dest: "/etc/hostapd/hostapd.conf", mode: "0644" } 
+   - { src: "dnsmasq.conf", dest: "/etc/dnsmasq.conf", mode: "0644" }
+   - { src: "autohotspot.service", dest: "/etc/systemd/system/autohotspot.service", mode: "0755" }
+   - { src: "autohotspotN", dest: "/usr/bin/autohotspotN", mode: "0755" }
+
+- name: "/etc/default/hostapd DAEMON_CONF"
+  replace:
+    path: /boot/config.txt
+    regexp: '^#DAEMON_CONF=""'
+    replace: '/etc/hostapd/hostapd.conf'
+
+- name: "/etc/default/hostapd DAEMON_OPTS"
+  replace:
+    path: /boot/config.txt
+    regexp: '^DAEMON_OPTS'
+    replace: '#DAEMON_OPTS'
+
+- name: "/etc/sysctl.conf"
+  replace:
+    path: /etc/sysctl.conf
+    regexp: '^#net.ipv4.ip_forward=1'
+    replace: 'net.ipv4.ip_forward=1'
+
+- name: "/etc/dhcpcd.conf"
+  lineinfile:
+    name: /etc/dhcpcd.conf
+    line: "nohook wpa_supplicant"
+    state: present
+
+- name: start service
+  systemd:
+    name: "autohotspot"
+    enabled: yes
+    state: started
+  notify: reboot
+
+- name: "Ensure a job that runs every 5 minutes"
+  cron:
+    name: "check dirs"
+    minute: "*/5"
+    job: "sudo /usr/bin/autohotspotN >/dev/null 2>&1"
+
+- name: "add nopasswd to /etc/sudoers"
+  lineinfile:
+    name: /etc/sudoers
+    line: "pi ALL=NOPASSWD: /usr/bin/autohotspotN"
+    state: present
