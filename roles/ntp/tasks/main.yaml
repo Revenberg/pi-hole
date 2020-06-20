@@ -12,6 +12,6 @@
     - force ntp update
   tags: ntp
 
-  - name: Make sure NTP is started up
+- name: Make sure NTP is started up
   service: name=ntp state=started enabled=yes
   tags: ntp
