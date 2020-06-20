@@ -8,7 +8,8 @@
   apt_repository:
     repo: deb http://apt.mopidy.com/ stable main contrib non-free
     state: present
-
+    update_cache: no
+    
 - name: Update apt cache
   apt:
     update_cache: yes
