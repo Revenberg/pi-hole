@@ -124,7 +124,7 @@
   when: python_configure.changed
 
 - name: install python
-  shell: make altinstall'
+  shell: 'make altinstall'
   args:
       chdir: "{{ build_path }}/Python-{{ PYTHON }}"
   become: yes
