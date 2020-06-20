@@ -1,12 +1,15 @@
 - name: Creates directory
   file:
-    path: /media/ssd
+    path: /media/{{ labels }}
     state: directory
-
+  with_items: "{{ labels }}"
+  
 - name: Mount up device by label
   mount:
-    path: /media/ssd
-    src: "LABEL={{ label }}"
+    path: /media/{{ labels }}
+    src: "LABEL={{ item }}"
     fstype: exfat
     state: mounted
+  with_items: "{{ labels }}"
 
+  ignore_errors: true
