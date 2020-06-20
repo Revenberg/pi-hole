@@ -1,4 +1,5 @@
 #!/bin/bash
+cp ./pi-hole/install.sh ~/install.sh
 if [ ! -f "/home/pi/.pswrd" ]; then
     echo $passwrd > /home/pi/.pswrd
 
