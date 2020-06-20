@@ -30,8 +30,7 @@
     owner: pi
     group: pi
     mode: '0755'
-
-  wget https://github.com/dynobot/Arch-Linux-Audio-RPi/raw/master/sound.service -O /etc/systemd/system/sound.service
+  
 - name: Copy sound file with owner and permissions
   copy:
     src: sound.sh
