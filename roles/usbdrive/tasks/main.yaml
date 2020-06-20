@@ -1,9 +1,9 @@
 - name: Creates directory
   file:
-    path: /media/{{ labels }}
+    path: /media/{{ item }}
     state: directory
   with_items: "{{ labels }}"
-  
+
 - name: Mount up device by label
   mount:
     path: /media/{{ labels }}
