@@ -8,8 +8,7 @@
   roles:
   - general
   - ntp
-  - { role: pi-hole,
-      become_user: pi }  
+  - pi-hole
   - music
   - zram
   - usbdrive
