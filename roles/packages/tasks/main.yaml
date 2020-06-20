@@ -1,0 +1,30 @@
+- name: "install apt-get packages"
+  apt: 
+    name: [ "curl", "exfat-fuse", "exfat-utils", "ntfs-3g" ]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: "set mount flag 1"
+  replace:
+    path: /lib/systemd/system/systemd-udevd.service
+    regexp: 'MountFlags=slave'
+    replace: 'MountFlags=shared'
+
+- name: "set mount flag 2"
+  lineinfile:
+    path: /lib/systemd/system/systemd-udevd.service
+    line: 'MountFlags=shared'
+
+- name: "install remove libreoffice"
+  apt:
+    name: [ "libreoffice" ]
+    state: absent
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
