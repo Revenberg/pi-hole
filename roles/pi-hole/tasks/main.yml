@@ -85,3 +85,9 @@
 #  poll: 0
 #  ignore_errors: True
 #  tags: pihole
+
+- name: copy external.conf
+  copy:
+    src: external.conf
+    dest: /etc/lighttpd/external.conf
+
