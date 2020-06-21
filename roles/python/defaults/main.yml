@@ -1,3 +1,4 @@
 ---
 build_path: /var/install
-OPEN_SSL: openssl-1.1.1g
+OPEN_SSL: 1.1.1g
+PYTHON: 3.9.0
