@@ -48,7 +48,7 @@
   failed_when: False
 
 - name: install openssl
-  group:
+  block:
   - name: Download openssl
     get_url:
         url: "https://www.openssl.org/source/openssl-{{ OPEN_SSL }}.tar.gz"
@@ -102,7 +102,7 @@
   failed_when: False
 
 - name: "install python {{ PYTHON }}"
-  group:
+  block:
   - name: Download python
     get_url:
         url: "https://www.python.org/ftp/python/{{PYTHON}}/Python-{{PYTHON}}.tgz"
