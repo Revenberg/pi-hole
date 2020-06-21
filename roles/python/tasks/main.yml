@@ -109,6 +109,7 @@
           _ssl _ssl.c \
               -DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \
                   -L$(SSL)/lib -lssl -lcrypto
+
 - name: configure python
   command: ./configure --enable-optimizations --with-openssl=/usr/local --prefix=/usr/local
   args:
@@ -136,6 +137,7 @@
       block: |
           export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3.7"
           source /usr/local/bin/virtualenvwrapper.sh
+
 - name: Install pip virtualenv
   pip:
     executable: /usr/local/bin/pip3.7
@@ -144,15 +146,3 @@
         - virtualenvwrapper
   become: yes
 
-- name: pip install bricknil
-  pip:
-    name:
-        - bricknil
-    virtualenv: "{{ HOME }}/.virtualenvs/bricknil"
-    virtualenv_python: python3.7
-
-- name: git clone bricknil
-  git:
-      repo: 'https://github.com/virantha/bricknil.git'
-      dest: '{{ HOME }}/bricknil'
-      clone: yes
