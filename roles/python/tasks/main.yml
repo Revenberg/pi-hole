@@ -119,7 +119,7 @@
 
   - name: Uncomment SSL
     blockinfile:
-        path: "{{ build_path}}/Python-{{ PYTHON }}/Modules/Setup.dist"
+        path: "{{ build_path }}/Python-{{ PYTHON }}/Modules/Setup"
         insertbefore: "#SSL=/usr/local/ssl"
         block: |
             SSL=/usr/local/ssl
