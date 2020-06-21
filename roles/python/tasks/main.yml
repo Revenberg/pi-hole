@@ -157,7 +157,7 @@
 
   - name: Install pip virtualenv
     pip:
-      executable: /usr/local/bin/pip3.7
+      executable: /usr/local/bin/pip3.8
       name:
           - virtualenv
           - virtualenvwrapper
