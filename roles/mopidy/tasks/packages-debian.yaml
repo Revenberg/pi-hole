@@ -36,6 +36,7 @@
 
 - name: Install mopidy packages
   pip:
+    executable: /usr/local/bin/pip{{ PYTHONVERSION }}
     name: "{{ mopidy_pip_packages }}"
     state: present
   notify: restart mopidy

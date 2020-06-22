@@ -21,3 +21,6 @@ ipv6_address: "{{ hostvars[inventory_hostname]['ansible_' + network_interface]['
 dns_servers:
   - "8.8.8.8"
   - "8.8.4.4"
+
+PYTHON: 3.8.3
+PYTHONVERSION: 3.8

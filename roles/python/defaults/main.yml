@@ -1,6 +1,4 @@
 ---
 build_path: /var/install
 OPEN_SSL: 1.1.1g
-PYTHON: 3.8.3
-PYTHONVERSION: 3.8
 HOME: /home/pi
