@@ -27,7 +27,7 @@
   mount:
     path: /media/{{ item }}
     src: "LABEL={{ item }}"
-    fstype: exfat
+    fstype: ntfs
     state: mounted
   with_items: "{{ labels }}"
   ignore_errors: True
