@@ -54,9 +54,10 @@
 - name: Install Pi-Hole
   shell: "~/install-pihole.sh --unattended"
   register: dbg_install_pihole
+  failed_when: dbg_install_pihole.rc not in [ 0, 1 ]
   tags: pihole
 
-- name: Install Pi-Hole
+- name: Install Pi-Hole set password
   shell: "sudo pihole -a -p admin"
   tags: pihole  
   notify: reboot
