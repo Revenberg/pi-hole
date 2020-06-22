@@ -59,6 +59,7 @@
 - name: Install Pi-Hole
   shell: "sudo pihole -a -p admin"
   tags: pihole  
+  notify: reboot
 
 #- name: Set static IP configuration
 #  become: True
@@ -89,5 +90,5 @@
 - name: copy external.conf
   copy:
     src: external.conf
-    dest: /etc/lighttpd/external.conf
+    dest: /etc/lighttpd/external.conf  
 

@@ -152,12 +152,12 @@
     blockinfile:
         path: "{{ HOME }}/.bashrc"
         block: |
-            export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python{{ PYTHON }}"
-            source /usr/local/bin/virtualenvwrapper.sh
-
+            export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python{{ PYTHONVERSION }}"
+            source /usr/local/bin/virtualenvwrapper.sh            
+            alias python='/usr/local/bin/python{{ PYTHONVERSION }}'
   - name: Install pip virtualenv
     pip:
-      executable: /usr/local/bin/pip3.8
+      executable: /usr/local/bin/pip{{ PYTHONVERSION }}
       name:
           - virtualenv
           - virtualenvwrapper
