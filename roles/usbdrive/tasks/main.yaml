@@ -1,3 +1,22 @@
+---
+- name: "install apt-get packages"
+  apt: 
+    name: [ "usbmount", "exfat-fuse", "exfat-utils", "3g", "ntfs", "ntfs-3g" ]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: "set mount flag 1"
+  replace:
+    path: /lib/systemd/system/systemd-udevd.service
+    regexp: 'MountFlags=slave'
+    replace: 'MountFlags=shared'
+
+- name: "set mount flag 2"
+  lineinfile:
+    path: /lib/systemd/system/systemd-udevd.service
+    line: 'MountFlags=shared'
+    
 - name: Creates directory
   file:
     path: /media/{{ item }}

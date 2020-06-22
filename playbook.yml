@@ -7,12 +7,12 @@
   become: yes
   roles:
   - general
+  - usbdrive
   - python
   - ntp
   - pi-hole
   - music
   - zram
-  - usbdrive
   - hifiberry
   - { role: nodered,
       become_user: pi }
