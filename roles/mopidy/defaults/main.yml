@@ -16,7 +16,6 @@ mopidy_pip_packages:
   - Mopidy-Mopify
   - Mopidy-WebSettings
   - Mopidy-Jukepi
-  - Mopidy-API-Explorer
   - Mopidy-Simple-Webclient
   - Mopidy-Local-Images
   - Mopidy-Local-SQLite

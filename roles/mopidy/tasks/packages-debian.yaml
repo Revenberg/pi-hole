@@ -35,6 +35,10 @@
 #  with_items: "{{ mopidy_packages }}"
 
 - name: Install mopidy packages
+  shell:
+    cmd: "pip install --upgrade pip"    
+
+- name: Install mopidy packages
   pip:
     executable: /usr/local/bin/pip{{ PYTHONVERSION }}
     name: "{{ mopidy_pip_packages }}"
