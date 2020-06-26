@@ -1,6 +1,6 @@
 #!/usr/bin/env ansible-playbook -i hosts --become -c paramiko
 ---
-- name: Ansible Playbook for configuring Pi-Hole on Raspberry Pi
+- name: Ansible Playbook for configuring jukebox on Raspberry Pi
   hosts: localhost
 #  remote_user: pi
   become_user: root
@@ -14,10 +14,9 @@
   - hotspot
   - minidlna
   - ntp
-  - pi-hole
   - music
   - zram
   - hifiberry
-  - { role: nodered,
-      become_user: pi }
+#  - { role: nodered,
+#      become_user: pi }
   
