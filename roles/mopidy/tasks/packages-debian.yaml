@@ -40,13 +40,13 @@
 #    enabled: yes
 #  with_items: "{{ mopidy_packages }}"
 
-- name: Install mopidy packages
-  shell:
-    cmd: "/usr/local/bin/pip{{ PYTHONVERSION }} install --upgrade pip"    
+#- name: Install mopidy packages
+#  shell:
+#    cmd: "/usr/local/bin/pip{{ PYTHONVERSION }} install --upgrade pip"    
 
 - name: Install mopidy packages
   pip:
-    executable: /usr/local/bin/pip{{ PYTHONVERSION }}
+#    executable: /usr/local/bin/pip{{ PYTHONVERSION }}
     name: "{{ mopidy_pip_packages }}"
     state: present
   notify: restart mopidy
