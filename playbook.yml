@@ -9,6 +9,9 @@
   - general
   - usbdrive
   - python
+  - nginx
+  - hotspot
+  - minidlna
   - ntp
   - pi-hole
   - music
@@ -17,7 +20,4 @@
   - { role: nodered,
       become_user: pi }
   - mopidy
-  - nginx
-  - hotspot
-  - minidlna
-
+  
