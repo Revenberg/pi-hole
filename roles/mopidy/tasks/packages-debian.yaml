@@ -13,7 +13,7 @@
 - name: Update apt cache
   apt:
     update_cache: yes
-    cache_valid_time: 3600
+    cache_valid_time: 0
   changed_when: False
 
 - name: Ensure mopidy is installed
@@ -49,3 +49,9 @@
   file:
     path: /etc/apt/sources.list.d/apt_mopidy_com.list
     state: absent
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 0
+  changed_when: False
