@@ -93,3 +93,7 @@
     src: external.conf
     dest: /etc/lighttpd/external.conf  
 
+- name: restart lighttpd
+  service:
+    name: "{{ lighttpd_service }}"
+    state: restarted
