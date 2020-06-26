@@ -9,6 +9,7 @@
   - general
   - usbdrive
   - python
+  - mopidy
   - nginx
   - hotspot
   - minidlna
@@ -19,5 +20,4 @@
   - hifiberry
   - { role: nodered,
       become_user: pi }
-  - mopidy
   
