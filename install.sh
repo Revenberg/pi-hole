@@ -24,11 +24,11 @@ if [ ! -f "/home/pi/.pswrd" ]; then
 
     git clone https://github.com/Revenberg/pi-hole.git
 
+    sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | while read line;
     do
         ssh-keyscan -H $line >> ~/.ssh/known_hosts
-    done
-    sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
+    done    
 fi
 
 
@@ -48,6 +48,7 @@ do
   echo "    $line:" >> /home/pi/ansible/hosts
   echo "      ansible_user: pi" >> /home/pi/ansible/hosts
 done
+
 #echo /home/pi/ansible/hosts
 #ansible-vault encrypt_string --vault-password-file /home/pi/.pswrd '$pswrd' --name 'ansible_ssh_pass'  >> /home/pi/ansible/hosts
 
