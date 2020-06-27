@@ -1,0 +1,6 @@
+---
+# defaults file for kitos9112.rpimonitor
+rpimonitor_user: rpimonitor
+rpimonitor_group: rpimonitor
+rpimonitor_port: 8888
+rpimonitor_ip_addr: 0.0.0.0

@@ -1,0 +1,6 @@
+---
+# vars file for kitos9112.rpimonitor
+rpimonitor_repo: "deb https://giteduberger.fr rpimonitor/"
+rpimonitor_apt_key_server: "keyserver.ubuntu.com"
+rpimonitor_apt_key_id: "2C0D3C0F"
+rpimonitor_daemon_conf_file: "/etc/rpimonitor/daemon.conf"

@@ -17,6 +17,7 @@
   - music
   - zram
   - hifiberry
+  - rpimonitor
 #  - { role: nodered,
 #      become_user: pi }
   

@@ -1,0 +1,44 @@
+---
+# tasks file for kitos9112.rpimonitor
+- name: Install dirmgt acting as pre-requisite
+  apt:
+    name: dirmngr
+    update_cache: yes
+
+- name: Install RPi-monitor public GPG key
+  apt_key:
+    keyserver: "{{ rpimonitor_apt_key_server }}"
+    id: "{{ rpimonitor_apt_key_id }}"
+
+- name: Install APT repository
+  apt_repository:
+    repo: "{{ rpimonitor_repo }}"
+    filename: rpimonitor
+
+- name: Create rpimonitor group service account
+  group:
+    name: "{{ rpimonitor_group }}"
+    system: yes
+
+- name: Create rpimonitor user service account
+  user:
+    name: "{{ rpimonitor_user }}"
+    create_home: no
+    system: yes
+    group: "{{ rpimonitor_group }}"
+
+- name: Install RPI-Monitor
+  apt:
+    update_cache: yes
+    name: rpimonitor
+  notify:
+    - Update rpi-monitor
+    - Install auto-package update
+
+- name: Configure RPi-monitor daemon file
+  template:
+    src: templates/daemon_conf.j2
+    dest: "{{ rpimonitor_daemon_conf_file }}"
+    owner: "{{ rpimonitor_user }}"
+    group: "{{ rpimonitor_group }}"
+    mode: '0664'
