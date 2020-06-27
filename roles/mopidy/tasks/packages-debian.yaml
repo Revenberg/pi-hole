@@ -6,7 +6,7 @@
 
 - name: Download apt_mopidy_com.list
   get_url:
-    url: https://apt.mopidy.com/mopidy.list
+    url: https://apt.mopidy.com/buster.list
     dest: /etc/apt/sources.list.d/apt_mopidy_com.list
     mode: '0775'
 
@@ -19,7 +19,7 @@
 - name: Update apt cache
   apt:
     update_cache: yes
-    cache_valid_time: 0
+#    cache_valid_time: 0
   changed_when: False
 
 - name: Ensure mopidy is installed
