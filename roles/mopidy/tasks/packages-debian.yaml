@@ -48,7 +48,7 @@
 
 - name: Install mopidy packages
   shell:
-    cmd: "sudo python -m pip install {{ item }}"        
+    cmd: "python -m pip install {{ item }}"            
   with_items: "{{ mopidy_pip_packages }}"
   notify: restart mopidy
   
