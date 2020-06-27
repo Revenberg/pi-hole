@@ -42,13 +42,13 @@
   with_items: "{{ mopidy_packages }}"
   when: mopidy_packages is defined
 
-- name: Install mopidy packages
+- name: upgrade pip
   shell:
     cmd: "/usr/local/bin/pip{{ PYTHONVERSION }} install --upgrade pip"    
 
 - name: Install mopidy packages
   shell:
-    cmd: "/usr/local/bin/python3.8 -m pip install {{ item }}"            
+    cmd: "/usr/local/bin/python{{ PYTHONVERSION }} -m pip install {{ item }}"            
   with_items: "{{ mopidy_pip_packages }}"
   notify: restart mopidy
   
