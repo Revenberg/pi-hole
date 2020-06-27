@@ -13,7 +13,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     sudo apt-get install git -y
 
     # Install Ansible and Git on the machine.
-    sudo apt-get install python-pip git python-dev sshpass -y
+    sudo apt-get install python-pip git python-dev sshpass -y 
     sudo pip install ansible
     sudo pip install markupsafe
 
@@ -32,9 +32,10 @@ fi
 
 echo "[rpi]" > /home/pi/ansible/hosts
 
+pswrd=$(cat /home/pi/.pswrd)
 ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | while read line;
 do
-    echo "$line ansible_connection=ssh ansible_ssh_user=pi ansible_user=pi" >> /home/pi/ansible/hosts
+    echo "$line ansible_connection=ssh ansible_ssh_user=pi  ansible_ssh_pass=$pswrd" >> /home/pi/ansible/hosts
 done
 
 cd ~/pi-hole
