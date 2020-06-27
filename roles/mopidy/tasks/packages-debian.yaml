@@ -31,6 +31,7 @@
   apt:
     name: "{{ mopidy_packages }}"
     state: present
+  when: mopidy_packages is defined
   notify: restart mopidy
 
 - name: Start services
@@ -39,6 +40,7 @@
     state: started
     enabled: yes
   with_items: "{{ mopidy_packages }}"
+  when: mopidy_packages is defined
 
 - name: Install mopidy packages
   shell:
