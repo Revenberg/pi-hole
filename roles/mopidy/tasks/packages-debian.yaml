@@ -47,13 +47,11 @@
     cmd: "/usr/local/bin/pip{{ PYTHONVERSION }} install --upgrade pip"    
 
 - name: Install mopidy packages
-  pip:
-    executable: /usr/local/bin/pip{{ PYTHONVERSION }}
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ mopidy_pip_packages }}"  
+  shell:
+    cmd: "sudo python -m pip install {{ item }}"        
+  with_items: "{{ mopidy_pip_packages }}"
   notify: restart mopidy
-
+  
 - name: Ansible delete apt_mopidy_com.list
   file:
     path: /etc/apt/sources.list.d/apt_mopidy_com.list
