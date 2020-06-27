@@ -49,8 +49,9 @@
 - name: Install mopidy packages
   pip:
     executable: /usr/local/bin/pip{{ PYTHONVERSION }}
-    name: "{{ mopidy_pip_packages }}"
+    name: "{{ item }}"
     state: present
+  with_items: "{{ mopidy_pip_packages }}"  
   notify: restart mopidy
 
 - name: Ansible delete apt_mopidy_com.list
