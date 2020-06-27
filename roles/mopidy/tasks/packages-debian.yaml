@@ -48,7 +48,7 @@
 
 - name: Install mopidy packages
   shell:
-    cmd: "python -m pip install {{ item }}"            
+    cmd: "/usr/local/bin/python3.8 -m pip install {{ item }}"            
   with_items: "{{ mopidy_pip_packages }}"
   notify: restart mopidy
   
