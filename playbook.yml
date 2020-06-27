@@ -10,7 +10,7 @@
   - usbdrive
   - python
   - mopidy
-  #- nginx
+  - nginx
   - hotspot
   - minidlna
   - ntp
