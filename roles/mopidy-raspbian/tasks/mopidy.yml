@@ -1,0 +1,48 @@
+---
+- name: Trust mopidy developer GPG key
+  apt_key:
+    url: https://apt.mopidy.com/mopidy.gpg
+    state: present
+
+- name: Download apt_mopidy_com.list
+  get_url:
+    url: https://apt.mopidy.com/buster.list
+    dest: /etc/apt/sources.list.d/apt_mopidy_com.list
+    mode: '0775'
+
+- name: Install mopidy
+  apt:
+    name: mopidy
+    state: latest
+    update_cache: yes
+  notify: restart mopidy
+
+- name: Start mopidy service and enable on boot
+  service:
+    name: mopidy
+    state: started
+    enabled: yes
+
+- name: Http config
+  ini_file:
+    dest: "{{ mopidy_conf_path }}"
+    section: http
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    backup: yes
+  with_items:
+    - { option: enabled  , value: "{{ 'true' if mopidy_raspbian_enable_http else 'false' }}" }
+    - { option: hostname , value: "{{ mopidy_raspbian_hostname }}" }
+  notify: restart mopidy
+
+- name: MPD config
+  ini_file:
+    dest: "{{ mopidy_conf_path }}"
+    section: mpd
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    backup: yes
+  with_items:
+    - { option: enabled  , value: "{{ 'true' if mopidy_raspbian_enable_mpd else 'false' }}" }
+    - { option: hostname , value: "{{ mopidy_raspbian_hostname }}" }
+  notify: restart mopidy

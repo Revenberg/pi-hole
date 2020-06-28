@@ -1,0 +1,12 @@
+---
+- include: avahi.yml
+- include: python27.yml
+- include: pip.yml
+- include: ipv6.yml
+- include: alsa.yml
+- include: mopidy.yml
+- include: spotify.yml
+- include: soundcloud.yml
+- include: moped.yml
+- include: mopify.yml
+- include: kuechenradio.yml

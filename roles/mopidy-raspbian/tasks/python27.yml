@@ -1,0 +1,7 @@
+---
+
+- name: Apt python2.7-dev
+  apt:
+    name: python2.7-dev
+    state: latest
+    update_cache: yes

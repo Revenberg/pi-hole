@@ -1,0 +1,30 @@
+---
+
+# 0 means auto, and is the default
+# 1 means analog
+# 2 means HDMI
+- name: Alsa sound connector
+  lineinfile:
+    regexp: amixer cset numid=3 ?
+    line: amixer cset numid=3 {{ alsa_sound_connector }}
+    insertbefore: '^exit 0$'
+    dest: /etc/rc.local
+  notify: play test sound
+
+- name: Fixing audio quality issues
+  copy:
+    src: asound.conf
+    dest: /etc/asound.conf
+
+- name: alsasink
+  ini_file:
+    dest: "{{ mopidy_conf_path }}"
+    section: audio
+    option: output
+    value: alsasink
+    backup: yes
+
+- name: HDMI not DVI
+  lineinfile:
+    dest: /boot/config.txt
+    line: hdmi_drive=2

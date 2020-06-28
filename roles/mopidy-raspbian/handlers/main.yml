@@ -1,0 +1,19 @@
+---
+
+- name: play test sound
+  shell: aplay /usr/share/sounds/alsa/Front_Center.wav
+
+- name: restart mopidy
+  service:
+    name: mopidy
+    state: restarted
+
+- name: get get-pip.py
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp
+
+# Install some unspecified version of pip
+- name: run get-pip.py
+  shell: python /tmp/get-pip.py
+
+- name: reboot raspberry pi
+  command: reboot

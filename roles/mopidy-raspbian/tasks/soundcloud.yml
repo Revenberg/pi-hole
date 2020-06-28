@@ -1,0 +1,18 @@
+---
+- name: Install SoundCloud extension
+  pip:
+    name: Mopidy-SoundCloud
+    state: "{{ 'latest' if mopidy_raspbian_enable_soundcloud else 'absent' }}"
+#  sudo: yes
+  notify: restart mopidy
+
+- name: SoundCloud auth token
+  ini_file:
+    dest: "{{ mopidy_conf_path }}"
+    section: soundcloud
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { option: enabled  , value: "{{ 'true' if mopidy_raspbian_enable_soundcloud else 'false' }}" }
+    - { option: auth_token , value: "{{ mopidy_raspbian_soundcloud_auth_token }}" }
+  notify: restart mopidy

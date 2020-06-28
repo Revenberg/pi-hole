@@ -1,0 +1,24 @@
+---
+mopidy_conf_path: /etc/mopidy/mopidy.conf
+
+ALSA_SOUND_CONNECTOR_AUTO: 0  # (default)
+ALSA_SOUND_CONNECTOR_ANALOG: 1
+ALSA_SOUND_CONNECTOR_HDMI: 2
+alsa_sound_connector: "{{ ALSA_SOUND_CONNECTOR_AUTO }}"
+
+mopidy_raspbian_hostname: '::'
+mopidy_raspbian_enable_http: yes
+mopidy_raspbian_enable_mpd: yes
+
+# Web apps
+mopidy_raspbian_install_kuechenradio: no
+mopidy_raspbian_install_moped: no
+mopidy_raspbian_install_mopify: no
+
+# Audio services
+mopidy_raspbian_enable_spotify: no
+mopidy_raspbian_spotify_username: TBD
+mopidy_raspbian_spotify_password: TBD
+
+mopidy_raspbian_enable_soundcloud: no
+mopidy_raspbian_soundcloud_auth_token: TBD

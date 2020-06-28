@@ -1,0 +1,16 @@
+---
+
+- name: Pip moped
+  pip:
+    name: Mopidy-Moped
+    state: "{{ 'present' if mopidy_raspbian_install_moped else 'absent' }}"
+  notify: restart mopidy
+
+- name: Enable moped
+  ini_file:
+    dest: "{{ mopidy_conf_path }}"
+    section: moped
+    option: enabled
+    value: "{{ 'true' if mopidy_raspbian_install_moped else 'false' }}"
+    backup: yes
+  notify: restart mopidy

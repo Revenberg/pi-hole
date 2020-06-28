@@ -1,0 +1,24 @@
+---
+# Installs pip if it is not already installed.
+# Upgrades pip if it is not the version specified.
+
+- name: Some version of pip should be installed
+  shell: which pip
+  register: pip_version_check
+  failed_when: False
+  changed_when: pip_version_check.rc != 0
+  notify:
+    - get get-pip.py
+    - run get-pip.py
+
+- name: Force handler execution now
+  meta: flush_handlers
+
+- name: Use pip to install our desired version of pip
+  pip:
+    name: pip
+    version: 6.0.7
+
+- name: Install setuptools
+  pip:
+    name: setuptools==12.0.5

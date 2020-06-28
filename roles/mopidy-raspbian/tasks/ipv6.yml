@@ -1,0 +1,9 @@
+---
+
+- name: Load the IPv6 kernel module
+  modprobe: name=ipv6 state=present
+
+- name: Add ipv6 to /etc/modules, ensure IPv6 kernel module is loaded on boot
+  lineinfile:
+    dest: /etc/modules
+    line: ipv6
