@@ -21,3 +21,4 @@
   - rpimonitor
 #  - { role: nodered,
 #      become_user: pi }  
+  - access-point

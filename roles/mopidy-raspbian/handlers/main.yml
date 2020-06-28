@@ -24,10 +24,6 @@
 - name: run get-pip.py
   shell: python /tmp/get-pip.py
 
-- name: reboot raspberry pi
-  debug:
-    msg: "please reboot"
-
 - name: scan mopidy
   shell:
     cmd: "mopidyctl local scan"
