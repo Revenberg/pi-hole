@@ -1,0 +1,24 @@
+---
+
+- name: Configuring vsftp
+  template:
+    src: "{{ vsftpd_config_template if vsftpd_config_template else 'etc/vsftpd.conf.j2' }}"
+    dest: "{{ vsftpd_config_template_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart vsftpd
+
+- name: Adding nologin shell
+  lineinfile:
+    state: present
+    dest: /etc/shells
+    line: "/usr/sbin/nologin"
+    regexp: "^/usr/sbin/nologin"
+    insertafter: EOF
+
+- name: Setting SELinux booleans
+  seboolean:
+    name: "{{ item.key }}"
+    state: "{{ item.value }}"
+  with_dict: "{{ vsftpd_seboolean }}"

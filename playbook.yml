@@ -21,4 +21,4 @@
   - rpimonitor
 #  - { role: nodered,
 #      become_user: pi }
-  
+  - vsftpd
