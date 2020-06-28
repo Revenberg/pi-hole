@@ -4,7 +4,7 @@ mopidy_password: ''
 --mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 mopidy_hostname: 0.0.0.0
 allowed_origins: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
-mopidy_media_dir: '/media/media/Music/'
+mopidy_media_dir: '/media/media/'
 
 #mopidy_packages:
 #  - upmpdcli
@@ -17,6 +17,7 @@ mopidy_pip_packages:
   - Mopidy-WebSettings
   - Mopidy-Jukepi
   - Mopidy-Simple-Webclient
+  - Mopidy-Local
   - Mopidy-Local-Images
   - Mopidy-Local-SQLite
 #  - Mopidy-ALSAMixer  
@@ -37,8 +38,8 @@ mopidy_settings:
   - { section: 'local-images', option: 'enabled', value: 'true' }
   - { section: 'local-images', option: 'library', value: 'json' }
   - { section: 'local-images', option: 'album_art_files', value: '*.jpg, *.jpeg, *.png' }
-#  - { section: 'file', option: 'enabled', value: 'true' }
-#  - { section: 'file', option: 'media_dir', value: '{{ mopidy_media_dir }}' }
+  - { section: 'file', option: 'enabled', value: 'true' }
+  - { section: 'file', option: 'media_dir', value: '{{ mopidy_media_dir }}' }
   - { section: 'mopify', option: 'enabled', value: 'true' }
   - { section: 'mobile', option: 'enabled', value: 'true' }
   - { section: 'iris', option: 'enabled', value: 'true' }
