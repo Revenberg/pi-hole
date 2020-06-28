@@ -1,4 +1,11 @@
 ---
+- name: "install apt-get packages"
+  apt: 
+    name: [ "python", "python-pip" ]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
 - include: avahi.yml
 - include: python27.yml
 - include: pip.yml

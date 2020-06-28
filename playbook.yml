@@ -9,7 +9,8 @@
   - general
   - usbdrive
   - python
-  - mopidy
+#  - mopidy
+  - mopidy-raspbian
   - nginx
   - hotspot
   - minidlna
