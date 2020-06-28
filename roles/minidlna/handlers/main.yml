@@ -5,6 +5,5 @@
     state: restarted
 
 - name: reload minidlna
-  service: 
-    name: minidlna 
-    state: force-reload
+  shell:
+    cmd: "service minidlna force-reload"
