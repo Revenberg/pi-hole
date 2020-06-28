@@ -20,5 +20,4 @@
   - hifiberry
   - rpimonitor
 #  - { role: nodered,
-#      become_user: pi }
-  - vsftpd
+#      become_user: pi }  

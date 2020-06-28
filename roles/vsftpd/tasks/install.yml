@@ -1,6 +1,0 @@
----
-
-- name: Installing packages
-  package:
-    name: "{{ vsftpd_package }}"
-    state: present
