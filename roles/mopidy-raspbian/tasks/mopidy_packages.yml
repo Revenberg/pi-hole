@@ -10,7 +10,7 @@
   
 - name: Install mopidy packages
   shell:
-    cmd: "pip install {{ item }}"            
+    cmd: "pip3 install {{ item }}"            
   with_items: "{{ mopidy_pip_packages }}"
   notify: restart mopidy
 

@@ -1,7 +1,7 @@
 ---
 - name: "install apt-get packages"
   apt: 
-    name: [ "python", "python-pip" ]
+    name: [ "python", "python-pip", "python3-pip" ]
     state: present
     update_cache: yes
     cache_valid_time: 3600
