@@ -16,7 +16,7 @@
   shell: python /tmp/get-pip.py
 
 - name: reboot raspberry pi
-    debug:
+  debug:
     msg: "please reboot"
 
 - name: scan mopidy
