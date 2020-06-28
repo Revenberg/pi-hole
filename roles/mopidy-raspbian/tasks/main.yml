@@ -17,3 +17,4 @@
 - include: moped.yml
 - include: mopify.yml
 - include: kuechenradio.yml
+- include: mopidy_packages

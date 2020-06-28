@@ -1,0 +1,72 @@
+---
+
+mopidy_password: ''
+--mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+mopidy_hostname: 0.0.0.0
+allowed_origins: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+mopidy_media_dir: '/media/media/Music/'
+
+#mopidy_packages:
+#  - upmpdcli
+
+mopidy_pip_packages:
+  - mopidy-musicbox-webclient
+  - Mopidy-Iris
+  - Mopidy-Mobile
+  - Mopidy-Mopify
+  - Mopidy-WebSettings
+  - Mopidy-Jukepi
+  - Mopidy-Simple-Webclient
+  - Mopidy-Local-Images
+  - Mopidy-Local-SQLite
+#  - Mopidy-ALSAMixer  
+
+# 'ini_file' module settings for mopidy.conf
+mopidy_settings:
+  - { section: 'audio', option: 'output', value: 'alsasink' }  
+  - { section: 'http', option: 'enabled', value: 'true' }
+  - { section: 'http', option: 'hostname', value: '::' }
+  - { section: 'http', option: 'port', value: '6680' }
+  - { section: 'http', option: 'allowed_origins',  value: '{{ allowed_origins }}' }
+  - { section: 'local', option: 'enabled', value: 'true' }
+  - { section: 'local', option: 'media_dir', value: '{{ mopidy_media_dir }}' }
+  - { section: 'local', option: 'library', value: 'sqlite' }
+  - { section: 'local', option: 'scan_timeout', value: '60000' }
+  - { section: 'local', option: 'scan_flush_threshold', value: '100' }
+  - { section: 'local', option: 'scan_follow_symlinks', value: 'true' }
+  - { section: 'local-images', option: 'enabled', value: 'true' }
+  - { section: 'local-images', option: 'library', value: 'json' }
+  - { section: 'local-images', option: 'album_art_files', value: '*.jpg, *.jpeg, *.png' }
+#  - { section: 'file', option: 'enabled', value: 'true' }
+#  - { section: 'file', option: 'media_dir', value: '{{ mopidy_media_dir }}' }
+  - { section: 'mopify', option: 'enabled', value: 'true' }
+  - { section: 'mobile', option: 'enabled', value: 'true' }
+  - { section: 'iris', option: 'enabled', value: 'true' }
+  - { section: 'iris', option: 'country', value: 'NL' }
+  - { section: 'iris', option: 'locale', value: 'nl_NL' }
+  - { section: 'softwaremixer', option: 'enabled', value: 'true' }
+  - { section: 'mpd', option: 'enabled', value: 'true' }
+  - { section: 'mpd', option: 'password', value: '{{ mopidy_password }}' }
+  - { section: 'mpd', option: 'hostname', value: '{{ mopidy_hostname }}' }
+  - { section: 'mpd', option: 'port', value: '6600' }
+  - { section: 'musicbox_webclient', option: 'enabled', value: 'true' }
+  - { section: 'musicbox_webclient', option: 'on_track_click', value: 'PLAY_ALL' }
+  - { section: 'websettings', option: 'enabled', value: 'true' }
+  - { section: 'websettings', option: 'config_file', value: '/etc/mopidy/mopidy.conf' }
+  - { section: 'jukepi', option: 'enabled', value: 'true' }
+#  - { section: 'alsamixer', option: 'enabled', value: 'true' }
+#  - { section: 'alsamixer', option: 'card', value: '1' }
+#  - { section: 'alsamixer', option: 'control', value: 'PCM' }
+#  - { section: 'alsamixer', option: 'min_volume', value: '0' }
+#  - { section: 'alsamixer', option: 'max_volume ', value: '100' }
+#  - { section: 'alsamixer', option: 'volume_scale', value: 'cubic' }
+  - { section: 'logging', option: 'console_format', value: '%(levelname)-8s %(message)s' }
+  - { section: 'logging', option: 'debug_format', value: '%(levelname)-8s %(asctime)s [%(process)d:%(threadName)s] %(name)s\n  %(message)s' }
+  - { section: 'logging', option: 'debug_file', value: '/var/log/mopidy/mopidy.log' }
+  - { section: 'logging', option: 'config_file', value: '/etc/mopidy/logging.conf' }
+  - { section: 'm3u', option: 'enabled', value: 'true' }
+  - { section: 'local-sqlite', option: 'enabled', value: 'true' }
+  - { section: 'local-sqlite', option: 'timeout ', value: '10' }
+  - { section: 'local-sqlite', option: 'use_album_mbid_uri', value: 'true' }
+  - { section: 'local-sqlite', option: 'use_artist_mbid_uri' , value: 'false' }  
+  - { section: 'local-sqlite', option: 'use_artist_sortname' , value: 'true' }

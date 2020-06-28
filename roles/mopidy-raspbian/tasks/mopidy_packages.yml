@@ -1,0 +1,17 @@
+---
+- name: Install mopidy packages
+  shell:
+    cmd: "pip install {{ item }}"            
+  with_items: "{{ mopidy_pip_packages }}"
+  notify: restart mopidy
+
+  - name: Mopidy conf
+  ini_file:
+    dest: /etc/mopidy/mopidy.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items: "{{ mopidy_settings }}"
+  notify: restart mopidy
+  when: stat_result.stat.exists == False
