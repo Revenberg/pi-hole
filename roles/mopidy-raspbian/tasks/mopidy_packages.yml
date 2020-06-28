@@ -5,7 +5,7 @@
   with_items: "{{ mopidy_pip_packages }}"
   notify: restart mopidy
 
-  - name: Mopidy conf
+- name: Mopidy conf
   ini_file:
     dest: /etc/mopidy/mopidy.conf
     section: "{{ item.section }}"
