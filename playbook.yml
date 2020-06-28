@@ -14,7 +14,7 @@
   - nginx
   - hotspot
   - minidlna
-  - ntp
+  #- ntp
   - music
   - zram
   - hifiberry

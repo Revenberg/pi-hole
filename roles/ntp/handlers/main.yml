@@ -3,5 +3,5 @@
   service: name=ntp state=restarted
 
 - name: force ntp update
-  shell: "service ntp stop && ntpdate -s {{ hostvars[groups[timelord][0]]['ansible_' ~ ntp_netdevice]['ipv4']['address'] }} && service ntp start"
+  shell: "service ntp stop && ntpdate -s {{ hostvars[groups[all][0]]['ansible_' ~ ntp_netdevice]['ipv4']['address'] }} && service ntp start"
 
