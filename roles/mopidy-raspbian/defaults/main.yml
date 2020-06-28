@@ -18,7 +18,6 @@ mopidy_pip_packages:
   - Mopidy-Jukepi
   - Mopidy-Simple-Webclient
   - Mopidy-Local
-#  - Mopidy-Local-Images
   - Mopidy-MPD
 #  - Mopidy-Local-SQLite
 #  - Mopidy-ALSAMixer  
@@ -36,9 +35,6 @@ mopidy_settings:
   - { section: 'local', option: 'scan_timeout', value: '60000' }
   - { section: 'local', option: 'scan_flush_threshold', value: '100' }
   - { section: 'local', option: 'scan_follow_symlinks', value: 'true' }
-#  - { section: 'local-images', option: 'enabled', value: 'true' }
-#  - { section: 'local-images', option: 'library', value: 'json' }
-#  - { section: 'local-images', option: 'album_art_files', value: '*.jpg, *.jpeg, *.png' }
   - { section: 'file', option: 'enabled', value: 'true' }
   - { section: 'file', option: 'media_dirs', value: '{{ mopidy_media_dir }}' }
   - { section: 'mopify', option: 'enabled', value: 'true' }

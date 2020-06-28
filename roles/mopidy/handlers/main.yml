@@ -1,6 +1,0 @@
----
-
-- name: restart mopidy
-  service:
-    name: mopidy
-    state: restarted
