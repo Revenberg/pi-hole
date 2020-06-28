@@ -22,6 +22,7 @@
     name: mopidy
     state: started
     enabled: yes
+  notify: scan mopidy
 
 - name: Http config
   ini_file:

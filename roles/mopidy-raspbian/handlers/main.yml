@@ -17,3 +17,7 @@
 
 - name: reboot raspberry pi
   command: reboot
+
+- name: scan mopidy
+  shell:
+    cmd: "mopidyctl local scan"

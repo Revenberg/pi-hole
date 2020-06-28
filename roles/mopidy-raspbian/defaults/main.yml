@@ -19,7 +19,7 @@ mopidy_pip_packages:
   - Mopidy-Simple-Webclient
   - Mopidy-Local
   - Mopidy-Local-Images
-  - Mopidy-Local-SQLite
+#  - Mopidy-Local-SQLite
 #  - Mopidy-ALSAMixer  
 
 # 'ini_file' module settings for mopidy.conf
@@ -66,8 +66,4 @@ mopidy_settings:
   - { section: 'logging', option: 'debug_file', value: '/var/log/mopidy/mopidy.log' }
   - { section: 'logging', option: 'config_file', value: '/etc/mopidy/logging.conf' }
   - { section: 'm3u', option: 'enabled', value: 'true' }
-  - { section: 'local-sqlite', option: 'enabled', value: 'true' }
-  - { section: 'local-sqlite', option: 'timeout ', value: '10' }
-  - { section: 'local-sqlite', option: 'use_album_mbid_uri', value: 'true' }
-  - { section: 'local-sqlite', option: 'use_artist_mbid_uri' , value: 'false' }  
-  - { section: 'local-sqlite', option: 'use_artist_sortname' , value: 'true' }
+  
