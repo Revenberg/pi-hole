@@ -12,7 +12,6 @@
 - include: ipv6.yml
 - include: alsa.yml
 - include: mopidy.yml
-- include: spotify.yml
 - include: soundcloud.yml
 - include: moped.yml
 - include: mopify.yml

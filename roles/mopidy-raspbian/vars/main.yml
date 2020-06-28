@@ -16,9 +16,5 @@ mopidy_raspbian_install_moped: no
 mopidy_raspbian_install_mopify: no
 
 # Audio services
-mopidy_raspbian_enable_spotify: no
-mopidy_raspbian_spotify_username: TBD
-mopidy_raspbian_spotify_password: TBD
-
 mopidy_raspbian_enable_soundcloud: no
 mopidy_raspbian_soundcloud_auth_token: TBD
