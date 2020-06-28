@@ -5,7 +5,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         exit 0
     fi
 
-    echo $1 > /home/pi/.pswrd
+    sudo passwd pi < /home/pi/.pswrd
 
     sudo apt-get update
     sudo apt-get autoremove
