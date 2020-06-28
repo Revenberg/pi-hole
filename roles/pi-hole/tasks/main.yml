@@ -81,7 +81,9 @@
     backup: yes
   tags: admin
 
-#- name: 'Reboot'
+- name: 'Reboot'
+  debug:
+    msg: "please reboot"
 #  shell: sleep 2 && reboot
 #  async: 1
 #  poll: 0

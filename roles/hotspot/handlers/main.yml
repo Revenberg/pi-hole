@@ -1,4 +1,5 @@
 ---
 
 - name: reboot
-  command: reboot
+  debug:
+    msg: "please reboot"
