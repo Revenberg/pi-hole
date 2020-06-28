@@ -12,11 +12,11 @@
 #  - mopidy
   - mopidy-raspbian
   - nginx
-  - hotspot
+  #- hotspot
   - minidlna
   #- ntp
   - music
-  - zram
+ # - zram
   - hifiberry
   - rpimonitor
 #  - { role: nodered,
