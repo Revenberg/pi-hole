@@ -5,6 +5,8 @@ if [ ! -f "/home/pi/.pswrd" ]; then
         exit 0
     fi
 
+    echo $1 > /home/pi/.pswrd
+
     sudo apt-get update
     sudo apt-get autoremove
 
@@ -21,7 +23,6 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     mkdir /home/pi/ansible
 
     git clone https://github.com/Revenberg/pi-hole.git
-
 fi
 
 mkdir /home/pi/.ssh 2>/dev/null
