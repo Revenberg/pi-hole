@@ -7,10 +7,161 @@
   apt: upgrade=dist
   become: yes
 
+- name: Install build-essential
+  package: name="build-essential" state=present
+  become: yes
+
 - name: Install build packages
   apt:
       state: present
       name:
-          - python3
+          - tk-dev
+          - libncurses5-dev
+          - libncursesw5-dev
+          - libreadline6-dev
+          - libdb5.3-dev
+          - libgdbm-dev
+          - libsqlite3-dev
+          - libssl-dev
+          - libbz2-dev
+          - libexpat1-dev
+          - liblzma-dev
+          - zlib1g-dev
+          - libffi-dev
+          - uuid-dev
+          - vim
+          - git
           - python-pip
+          - screen
   become: yes
+
+- name: Ensure build directory exists
+  file:
+      path: "{{ build_path }}"
+      state: directory
+      recurse: yes
+
+- name: check openssl version
+  command: "openssl version"
+  register: result_b
+  changed_when: False
+  failed_when: False
+
+- name: install openssl
+  block:
+  - name: Download openssl
+    get_url:
+        url: "https://www.openssl.org/source/openssl-{{ OPEN_SSL }}.tar.gz"
+        dest: "{{ build_path }}/openssl-{{ OPEN_SSL }}.tar.gz"
+        mode: "755"
+    register: openssl_download
+
+  - name: Untar openssl
+    unarchive:
+        remote_src: yes
+        src: "{{ build_path }}/openssl-{{ OPEN_SSL }}.tar.gz"
+        dest: "{{ build_path }}"
+    when: openssl_download.changed
+
+  - name: configure openssl
+    command: ./config shared --prefix=/usr/local
+    args:
+        chdir: "{{ build_path }}/openssl-{{ OPEN_SSL }}"
+    when: openssl_download.changed
+
+  - name: make openssl
+    command: make -j 4
+    args:
+        chdir: "{{ build_path }}/openssl-{{ OPEN_SSL }}"
+    register: make_openssl
+    when: openssl_download.changed
+
+  - name: install openssl
+    command: make install
+    args:
+        chdir: "{{ build_path }}/openssl-{{ OPEN_SSL }}"
+    become: yes
+    when: make_openssl.changed
+
+  - name: set /etc/ld.so.conf.d to add /usr/local/
+    lineinfile:
+        path: /etc/ld.so.conf.d/openssl.conf
+        create: yes
+        line: "/usr/local/lib"
+    become: yes
+  - name: run ldconfig to update dynamic link lib path to use /usr/local/lib
+    command: ldconfig
+    become: yes
+  when: "OPEN_SSL is not defined or OPEN_SSL not in result_b.stdout"
+
+
+- name: check python version
+  command: "python --version"
+  register: result_p
+  changed_when: False
+  failed_when: False
+
+- name: "install python {{ PYTHON }}"
+  block:
+  - name: Download python
+    get_url:
+        url: "https://www.python.org/ftp/python/{{PYTHON}}/Python-{{PYTHON}}.tgz"
+        dest: "{{ build_path }}/Python-{{ PYTHON }}.tgz"
+        mode: "755"
+    register: python_download
+
+  - name: Untar python
+    unarchive:
+        remote_src: yes
+        src: "{{ build_path }}/Python-{{ PYTHON }}.tgz"
+        dest: "{{ build_path }}"
+    when: python_download.changed
+
+  - name: Uncomment SSL
+    blockinfile:
+        path: "{{ build_path }}/Python-{{ PYTHON }}/Modules/Setup"
+        insertbefore: "#SSL=/usr/local/ssl"
+        block: |
+            SSL=/usr/local/ssl
+            _ssl _ssl.c \
+                -DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \
+                    -L$(SSL)/lib -lssl -lcrypto
+
+  - name: configure python
+    command: ./configure --enable-optimizations --with-openssl=/usr/local --prefix=/usr/local
+    args:
+        chdir: "{{ build_path }}/Python-{{ PYTHON }}"
+    when: python_download.changed
+    register: python_configure
+
+  - name: make python
+    shell: 'make -j 4'
+    args:
+        chdir: "{{ build_path }}/Python-{{ PYTHON }}"
+    register: make_python
+    when: python_configure.changed
+
+  - name: install python
+    shell: 'make altinstall'
+    args:
+        chdir: "{{ build_path }}/Python-{{ PYTHON }}"
+    become: yes
+    when: python_configure.changed
+
+  - name: Setup .bashrc
+    blockinfile:
+      path: "{{ HOME }}/.bashrc"
+      block: |
+          export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python{{ PYTHONVERSION }}"
+          source /usr/local/bin/virtualenvwrapper.sh            
+          alias python='/usr/local/bin/python{{ PYTHONVERSION }}'
+
+  - name: Install pip virtualenv
+    pip:
+      executable: /usr/local/bin/pip{{ PYTHONVERSION }}
+      name:
+          - virtualenv
+          - virtualenvwrapper
+    become: yes
+  when: "PYTHON is not defined or PYTHON not in result_p.stdout"
+

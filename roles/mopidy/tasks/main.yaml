@@ -29,7 +29,7 @@
 - name: "add nopasswd to /etc/sudoers"
   lineinfile:
     name: /etc/sudoers
-    line: "mopidy ALL=NOPASSWD: /usr/local/lib/python2.7/dist-packages/mopidy_iris/system.sh"
+    line: "mopidy ALL=NOPASSWD: /usr/local/lib/python{{ PYTHONVERSION }}/dist-packages/mopidy_iris/system.sh"
     state: present
 
 - name: Mopidy service
