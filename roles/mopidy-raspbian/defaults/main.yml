@@ -29,7 +29,7 @@ mopidy_pip_packages:
 # 'ini_file' module settings for mopidy.conf
 mopidy_settings:
   - { section: 'audio', option: 'output', value: 'alsasink' }  
-  - { section: 'audio', option: 'mixer_volume', value: '20' }
+  - { section: 'audio', option: 'mixer_volume', value: '50' }
   - { section: 'http', option: 'enabled', value: 'true' }
   - { section: 'http', option: 'hostname', value: '::' }
   - { section: 'http', option: 'port', value: '6680' }
