@@ -1,0 +1,4 @@
+---
+- name: reboot
+  debug:
+    msg: "please reboot"
