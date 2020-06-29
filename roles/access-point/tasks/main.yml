@@ -84,11 +84,9 @@
     - iptables-restore < /etc/iptables/rules.v4
     - ip6tables-restore < /etc/iptables/rules.v6
 
-- name: "systemctl enable service"
-  systemd:
-    state: started
-    enabled: yes
-    name: "{{ item }}"
+- name: "systemctl umask service"
+  shell::
+    cmd: "systemctl unmask {{ item }}"    
   with_items:
     - udhcpd
     - hostapd
