@@ -1,7 +1,7 @@
 ---
 - name: "Setting hostname to 'pihole'"
   hostname:
-    name: pihole
+    name: auto
   tags: admin
 
 - name: "Download Pi-Hole installer"
