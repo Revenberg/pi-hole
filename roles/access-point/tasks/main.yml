@@ -84,6 +84,15 @@
     - iptables-restore < /etc/iptables/rules.v4
     - ip6tables-restore < /etc/iptables/rules.v6
 
+- name: "systemctl enable service"
+  systemd:
+    state: started
+    enabled: yes
+    name: "{{ item }}"
+  with_items:
+    - udhcpd
+    - hostapd
+
 - name: Enable and (re-)start services
   service:
     name: "{{ item }}"
