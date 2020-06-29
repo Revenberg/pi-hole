@@ -21,7 +21,7 @@ mopidy_pip_packages:
   - Mopidy-Local
   - Mopidy-MPD
 #  - Mopidy-Local-SQLite
-#  - Mopidy-ALSAMixer  
+  - Mopidy-ALSAMixer  
 
 # 'ini_file' module settings for mopidy.conf
 mopidy_settings:
@@ -54,12 +54,12 @@ mopidy_settings:
   - { section: 'websettings', option: 'enabled', value: 'true' }
   - { section: 'websettings', option: 'config_file', value: '/etc/mopidy/mopidy.conf' }
   - { section: 'jukepi', option: 'enabled', value: 'true' }
-#  - { section: 'alsamixer', option: 'enabled', value: 'true' }
-#  - { section: 'alsamixer', option: 'card', value: '1' }
-#  - { section: 'alsamixer', option: 'control', value: 'PCM' }
-#  - { section: 'alsamixer', option: 'min_volume', value: '0' }
-#  - { section: 'alsamixer', option: 'max_volume ', value: '100' }
-#  - { section: 'alsamixer', option: 'volume_scale', value: 'cubic' }
+  - { section: 'alsamixer', option: 'enabled', value: 'true' }
+  - { section: 'alsamixer', option: 'card', value: '1' }
+  - { section: 'alsamixer', option: 'control', value: 'PCM' }
+  - { section: 'alsamixer', option: 'min_volume', value: '0' }
+  - { section: 'alsamixer', option: 'max_volume ', value: '100' }
+  - { section: 'alsamixer', option: 'volume_scale', value: 'cubic' }
   - { section: 'logging', option: 'console_format', value: '%(levelname)-8s %(message)s' }
   - { section: 'logging', option: 'debug_format', value: '%(levelname)-8s %(asctime)s [%(process)d:%(threadName)s] %(name)s\n  %(message)s' }
   - { section: 'logging', option: 'debug_file', value: '/var/log/mopidy/mopidy.log' }
