@@ -1,7 +1,4 @@
 ---
-- name: play test sound
-  shell: aplay /usr/share/sounds/alsa/Front_Center.wav
-
 - name: play wav sound
   shell:
     cmd: "aplay --device=hw:1,0 --rate=44100 --format=S16_LE --channels=2 /home/pi/example.wav -d 5"
