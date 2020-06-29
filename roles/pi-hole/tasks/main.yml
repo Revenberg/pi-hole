@@ -1,7 +1,7 @@
 ---
 - name: "Setting hostname to 'pihole'"
   hostname:
-    name: auto
+    name: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
   tags: admin
 
 - name: "Download Pi-Hole installer"
