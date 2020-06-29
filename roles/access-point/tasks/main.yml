@@ -1,7 +1,7 @@
 ---
 - name: Set hostname to {{ hostname }}
   hostname:
-    name: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+    name: "rpi"
 
 - name: Install required software packages
   apt:
