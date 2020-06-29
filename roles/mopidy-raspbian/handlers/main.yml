@@ -1,16 +1,10 @@
 ---
-- name: download example.wav
-  get_url: 
-    url: https://file-examples.com/wp-content/uploads/2017/11/file_example_WAV_1MG.wav
-    dest: /home/pi/example.wav
-    mode: '0775'
-
-- name: play wav
-  shell:
-    cmd: "aplay --device=hw:1,0 --rate=44100 --format=S16_LE --channels=2 /home/pi/example.wav -d 5"
-
 - name: play test sound
   shell: aplay /usr/share/sounds/alsa/Front_Center.wav
+
+- name: play wav sound
+  shell:
+    cmd: "aplay --device=hw:1,0 --rate=44100 --format=S16_LE --channels=2 /home/pi/example.wav -d 5"
 
 - name: restart mopidy
   service:
