@@ -17,7 +17,6 @@ mopidy_pip_packages:
   - mopidy-musicbox-webclient
   - Mopidy-Iris
   - Mopidy-Mobile
-  - Mopidy-Mopify
   - Mopidy-WebSettings
   - Mopidy-Jukepi
   - Mopidy-Simple-Webclient
@@ -42,7 +41,6 @@ mopidy_settings:
   - { section: 'local', option: 'scan_follow_symlinks', value: 'true' }
   - { section: 'file', option: 'enabled', value: 'true' }
   - { section: 'file', option: 'media_dirs', value: '{{ mopidy_media_dir }}' }
-  - { section: 'mopify', option: 'enabled', value: 'true' }
   - { section: 'mobile', option: 'enabled', value: 'true' }
   - { section: 'iris', option: 'enabled', value: 'true' }
   - { section: 'iris', option: 'country', value: 'NL' }

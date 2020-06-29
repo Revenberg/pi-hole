@@ -12,11 +12,18 @@ server {
     location /iris {
       return 301 $scheme://192.168.1.104:6680/iris;
     }
+    location /musicbox_webclient {
+      return 301 $scheme://192.168.1.104:6680/musicbox_webclient;
+    }
     location /mopidy/ws {
       return 301 $scheme://192.168.1.104:6680/mopidy/ws;
     }
+    location /mopidy {
+      return 301 $scheme://192.168.1.104:6680/mopidy;
+    }
+    
     location / {
-      return 301 $scheme://192.168.1.104:6680;
+      return 301 $scheme://192.168.1.104:6680/musicbox_webclient;
     }
 }
 

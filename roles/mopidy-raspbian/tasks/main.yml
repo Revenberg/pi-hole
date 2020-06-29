@@ -15,6 +15,4 @@
 - include: mopidy.yml
 - include: soundcloud.yml
 - include: moped.yml
-- include: mopify.yml
-- include: kuechenradio.yml
 - include: mopidy_packages.yml

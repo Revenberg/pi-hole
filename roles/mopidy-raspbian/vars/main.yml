@@ -10,11 +10,6 @@ mopidy_raspbian_hostname: '::'
 mopidy_raspbian_enable_http: yes
 mopidy_raspbian_enable_mpd: yes
 
-# Web apps
-mopidy_raspbian_install_kuechenradio: no
-mopidy_raspbian_install_moped: no
-mopidy_raspbian_install_mopify: no
-
 # Audio services
 mopidy_raspbian_enable_soundcloud: no
 mopidy_raspbian_soundcloud_auth_token: TBD
