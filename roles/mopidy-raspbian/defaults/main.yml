@@ -40,7 +40,6 @@ mopidy_settings:
   - { section: 'local', option: 'scan_timeout', value: '60000' }
   - { section: 'local', option: 'scan_flush_threshold', value: '100' }
   - { section: 'local', option: 'scan_follow_symlinks', value: 'true' }
-  - { section: 'local', option: 'playlists_dir',  value: '{{ mopidy_playlist_dir }}' }
   - { section: 'file', option: 'enabled', value: 'true' }
   - { section: 'file', option: 'media_dirs', value: '{{ mopidy_media_dir }}' }
   - { section: 'mopify', option: 'enabled', value: 'true' }
@@ -69,4 +68,4 @@ mopidy_settings:
   - { section: 'logging', option: 'debug_file', value: '/var/log/mopidy/mopidy.log' }
   - { section: 'logging', option: 'config_file', value: '/etc/mopidy/logging.conf' }
   - { section: 'm3u', option: 'enabled', value: 'true' }
-  
+  - { section: 'm3u', option: 'playlists_dir',  value: '{{ mopidy_playlist_dir }}' }
