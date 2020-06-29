@@ -99,3 +99,4 @@
   service:
     name: "{{ lighttpd_service }}"
     state: restarted
+    enabled: yes

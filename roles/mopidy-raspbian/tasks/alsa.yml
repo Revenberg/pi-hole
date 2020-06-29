@@ -30,8 +30,9 @@
     line: hdmi_drive=2
 
 - name: download example.wav
-  get_url: 
+  get_url:
     url: https://file-examples.com/wp-content/uploads/2017/11/file_example_WAV_1MG.wav
+    validate_certs: no
     dest: /home/pi/example.wav
     mode: '0775'
   notify: play wav sound
