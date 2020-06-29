@@ -6,7 +6,7 @@
     update_cache: yes
     cache_valid_time: 3600
 
-- include; locations.yml
+- include: locations.yml
 - include: avahi.yml
 - include: python27.yml
 - include: pip.yml
