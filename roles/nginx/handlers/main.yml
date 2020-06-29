@@ -1,0 +1,9 @@
+---
+- name: restart nginx service
+  block:
+  - name: nginx force-reload
+    shell:
+      cmd: "service nginx force-reload"
+  - name: nginx restart
+    shell:
+      cmd: "service nginx restart"

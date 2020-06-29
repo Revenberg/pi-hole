@@ -9,6 +9,7 @@
   template:
     src: default.j2
     dest: /etc/nginx/sites-enabled/default
+  notify: restart nginx service
 
 - name: nginx service
   service:
