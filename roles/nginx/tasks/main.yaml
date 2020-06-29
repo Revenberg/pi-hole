@@ -16,3 +16,4 @@
     name: nginx
     state: started
     enabled: yes
+  notify:  nginx reload
