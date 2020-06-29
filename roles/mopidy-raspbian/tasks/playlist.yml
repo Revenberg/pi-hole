@@ -1,0 +1,11 @@
+---
+- name: playlist.sh
+  template:
+    src: templates/playlist.sh.j2
+    dest: /var/tmp/playlist.sh
+
+- name: "Create playlist runs every 1 hours"
+  cron:
+    name: "Create playlist"
+    hour: "*"
+    job: "sudo /var/tmp/playlist.sh >/dev/null 2>&1"

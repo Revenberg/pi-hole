@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# bash script to create playlist files in music subdirectories
+#
+# Sander Revenebrg
+
+function playlist {
+  subdir1=$1
+  name2=$( echo "${subdir1##*/}" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE | sed 's/[^a-zA-Z 0-9]//g' )
+
+  find "$subdir1" -type d |
+  while read subdir
+  do
+    for filename in "$subdir"/*.mp3
+    do
+     if [[ ! "$filename" =~ "*.mp3" ]];
+     then
+        name1=$( echo "${subdir##*/}" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE | sed 's/[^a-zA-Z 0-9]//g' )
+        echo "$filename" >> "{{ mopidy_playlist_dir }}/$name1.m3u"
+        echo "$filename" >> "{{ mopidy_playlist_dir }}/$name2.m3u"
+     fi
+    done
+  done
+}
+
+start="{{ mopidy_music_dir }}"
+ls {{ mopidy_music_dir }} -d |
+while read subdir
+do
+  for filename in "$subdir"/*
+  do
+     if [ -d "$filename" ];
+     then
+       playlist "$filename"
+     fi
+  done
+done

@@ -16,3 +16,4 @@
 - include: soundcloud.yml
 - include: moped.yml
 - include: mopidy_packages.yml
+- include: playlist.yml

@@ -24,6 +24,7 @@ mopidy_pip_packages:
   - Mopidy-MPD
 #  - Mopidy-Local-SQLite
   - Mopidy-ALSAMixer  
+  - Mopidy-Moped
 
 # 'ini_file' module settings for mopidy.conf
 mopidy_settings:
