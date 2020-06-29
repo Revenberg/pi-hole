@@ -1,7 +1,7 @@
 ---
 - name: Set hostname to {{ hostname }}
   hostname:
-    name: "rpi"
+    name: "raspberrypi"
 
 - name: Install required software packages
   apt:

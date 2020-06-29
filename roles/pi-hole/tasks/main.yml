@@ -1,7 +1,7 @@
 ---
 - name: "Setting hostname to 'pihole'"
   hostname:
-    name: "rpi"
+    name: "raspberrypi"
   tags: admin
 
 - name: "Download Pi-Hole installer"
