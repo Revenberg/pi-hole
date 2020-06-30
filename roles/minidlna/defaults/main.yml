@@ -2,8 +2,8 @@
 minidlna:
   port: 8200
   media_dirs:
-    - "/media/media"
-    - "A,/media/media/Music"
-    - "V,/media/media/Video"
+    - "/media"
+    - "A,/media/music"
+    - "V,/media/movie"
   friendly_name: "Auto DLNA Server"
   model_name: "Windows Media Connect compatible (MiniDLNA)"
