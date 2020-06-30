@@ -1,8 +1,7 @@
 ---
-# "usbmount",
 - name: "install apt-get packages"
   apt: 
-    name: [  "exfat-fuse", "exfat-utils", "ntfs-3g" ]
+    name: [ "usbmount", "exfat-fuse", "exfat-utils", "ntfs-3g" ]
     state: present
     update_cache: yes
     cache_valid_time: 3600

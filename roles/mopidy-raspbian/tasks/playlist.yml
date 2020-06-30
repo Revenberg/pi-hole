@@ -3,7 +3,8 @@
   template:
     src: templates/playlist.sh.j2
     dest: /var/tmp/playlist.sh
-
+    mode: '0775'
+    
 - name: "Create playlist runs every 1 hours"
   cron:
     name: "Create playlist"
