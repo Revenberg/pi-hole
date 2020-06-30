@@ -29,7 +29,7 @@
     path: /media/{{ item }}
     src: "LABEL={{ item }}"
     boot: False
-    opt: "user,nofail"
+    opts: "user,nofail"
     fstype: exfat
     state: present
   with_items: "{{ labels }}"
