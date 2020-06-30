@@ -10,7 +10,7 @@
   - usbdrive
   #- python
 #  - mopidy
-  - mopidy-raspbian
+#Test  - mopidy-raspbian
 #Test  - nginx
   #- hotspot
 #Test  - minidlna
