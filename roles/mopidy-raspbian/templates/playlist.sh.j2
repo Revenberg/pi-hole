@@ -24,7 +24,7 @@ function playlist {
 }
 
 start="{{ mopidy_music_dir }}"
-ls {{ mopidy_music_dir }} -d |
+ls {{ mopidy_music_dir }} -d | grep -v "{{ mopidy_playlist_dir }}" |
 while read subdir
 do
   for filename in "$subdir"/*
