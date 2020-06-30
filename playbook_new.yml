@@ -7,18 +7,18 @@
   become: yes
   roles:
   - general
-  - usbdrive
+#Test  - usbdrive
   #- python
 #  - mopidy
-  - mopidy-raspbian
-  - nginx
+#Test  - mopidy-raspbian
+#Test  - nginx
   #- hotspot
-  - minidlna
+#Test  - minidlna
   #- ntp
-  - music
+#Test  - music
  # - zram
-  - hifiberry
-  - rpimonitor
+#Test  - hifiberry
+#Test  - rpimonitor
 #  - { role: nodered,
 #      become_user: pi }  
 #  - access-point
