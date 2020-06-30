@@ -28,7 +28,9 @@
   mount:
     path: /media/{{ item }}
     src: "LABEL={{ item }}"
+    boot: False
+    opt: "user,nofail"
     fstype: exfat
-    state: mounted
+    state: present
   with_items: "{{ labels }}"
   ignore_errors: True
