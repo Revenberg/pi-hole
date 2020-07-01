@@ -33,3 +33,7 @@
     state: present
   with_items: "{{ labels }}"
   ignore_errors: True
+
+- name: usb show devices
+  shell:
+    cmd: "lsblk -o name,mountpoint,label,size,uuid"
