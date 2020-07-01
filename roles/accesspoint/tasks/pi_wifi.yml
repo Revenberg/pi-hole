@@ -41,8 +41,24 @@
 - name: dnsmasq service
   service: name=dnsmasq enabled=yes state=started
 
-- name: hostapd service
-  service: name=hostapd enabled=yes state=started
+- name: Start hostapd service unmask
+  shell:
+    cmd: "sudo systemctl unmask hostapd"
+
+- name: Start hostapd service enable
+  shell:
+    cmd: "sudo systemctl enable hostapd"
+
+- name: Start hostapd service restart
+  shell:
+    cmd: "sudo systemctl restart hostapd"
+
+
+- name: Start hostapd service and enable on boot
+  service:
+    name: hostapd
+    state: started
+    enabled: yes
 
 - name: restart machine
   shell: sleep 2 && shutdown -r now
