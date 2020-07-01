@@ -1,0 +1,3 @@
+---
+- include: pi_update.yml
+- include: pi_wifi.yml
