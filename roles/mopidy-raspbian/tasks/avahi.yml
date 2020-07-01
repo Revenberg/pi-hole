@@ -4,4 +4,4 @@
   apt:
     name: avahi-daemon
     update_cache: yes
-    state: latest
+    
