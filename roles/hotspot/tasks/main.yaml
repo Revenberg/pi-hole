@@ -60,7 +60,7 @@
 - name: "Ensure a job that runs every 5 minutes"
   cron:
     name: "check dirs"
-    minute: "*/5"
+    minute: "30"
     job: "sudo /usr/bin/autohotspotN >/dev/null 2>&1"
 
 - name: "add nopasswd to /etc/sudoers"

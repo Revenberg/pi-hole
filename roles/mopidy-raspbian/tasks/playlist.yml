@@ -8,5 +8,5 @@
 - name: "Create playlist runs every 1 hours"
   cron:
     name: "Create playlist"
-    hour: "*"
+    minute: "0" 
     job: "sudo /var/tmp/playlist.sh >/dev/null 2>&1"
