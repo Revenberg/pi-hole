@@ -6,7 +6,7 @@
   become_user: root
   become: yes
   roles:
-  - general
+#  - general
 #Test  - usbdrive
   #- python
 #  - mopidy
@@ -21,4 +21,4 @@
 #Test  - rpimonitor
 #  - { role: nodered,
 #      become_user: pi }  
-#  - access-point
+  - accesspoint

@@ -19,7 +19,7 @@
  # - zram
   - hifiberry
   - rpimonitor
-  - accesspoint
+  #- accesspoint
 #  - { role: nodered,
 #      become_user: pi }  
 #  - access-point
