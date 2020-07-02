@@ -18,3 +18,8 @@
 - name: Remove dependencies that are no longer required
   apt:
     autoremove: yes
+
+- name: expand-rootfs
+  shell:
+    cmd: "raspi-config --expand-rootfs"
+  notify: reboot    
