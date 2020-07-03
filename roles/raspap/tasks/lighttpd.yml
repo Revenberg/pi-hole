@@ -48,10 +48,6 @@
   shell:
     cmd: "usermod -a -G www-data rpi"
     
-- name: "/etc/dhcpcd.conf"
-  shell:
-    cmd: "cat /etc/dhcpcd.conf | sudo tee -a /etc/raspap/networking/defaults > /dev/null"
-
 - name: "Defaults from Raspberry Pi configuration"
   lineinfile:
     name: /etc/raspap/networking/defaults
@@ -89,3 +85,10 @@
     owner: www-data
     group: www-data
     mode: '0750'
+
+ - name: replace line
+    lineinfile: 
+      path: /etc/lighttpd/lighttpd.conf
+      regexp: '^(.*)server.port(.*)$' 
+      line: 'server.port = 8080'
+      backrefs: yes
