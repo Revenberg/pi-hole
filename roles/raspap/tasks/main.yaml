@@ -1,5 +1,5 @@
 ---
-- include: install.yml
+##- include: install.yml
 - include: lighttpd.yml
 - include: raspap-gui.yml
 
