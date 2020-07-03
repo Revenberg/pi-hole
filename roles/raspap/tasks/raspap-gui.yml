@@ -8,5 +8,25 @@
   unarchive:
     src: html.zip
     dest: /var/www/
-    owner: root
+    owner: www-data
+    group: www-data
     mode: 600
+
+- name: Ensure /etc/raspap directory exists
+  file:
+    path: "/etc/raspap"
+    state: directory
+    recurse: yes
+
+- name: copy file
+  file:
+    src: /var/www/html/raspap.php
+    dest: /etc/raspap/raspap.php
+    remote_src: yes  
+  owner: www-data
+  group: www-data
+
+- name: Remove old /var/www/html/raspap.php
+  file: 
+    path:  /var/www/html/raspap.php
+    state: absent    
