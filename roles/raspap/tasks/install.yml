@@ -1,6 +1,10 @@
 ---
+
+- apt_repository:
+    repo: ppa:ondrej/php
+
 - name: "install apt-get packages"
   apt: 
-    name: [ "curl", "lighttpd", "php7.3-cgi", "hostapd", "dnsmasq", "vnstat" ]
+    name: [ "software-properties-common", "curl", "lighttpd", "php7.3-cgi", "hostapd", "dnsmasq", "vnstat", "iptables-persistent" ]
     state: present
     update_cache: yes

@@ -5,7 +5,27 @@
     state: directory
     recurse: yes
   notify: reboot 
-  
+
 - name: copy file
   shell:
     cmd: "mv /var/www/html/installers/*log.sh /etc/raspap/hostapd"
+
+- name: "systemctl stop systemd-networkd"
+  systemd:
+    state: stop
+    enabled: no
+    name: systemd-networkd
+
+- name: "copy asound.conf"
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"    
+  with_items:
+    - {"src": "/var/www/html/config/default_hostapd", "dest": "/etc/default/hostapd"}
+    - {"src": "/var/www/html/config/hostapd.conf", "dest": "/etc/hostapd/hostapd.conf" }
+    - {"src": "/var/www/html/config/dnsmasq.conf", "dest": "/etc/dnsmasq.d/090_raspap.conf" }
+    - {"src": "/var/www/html/config/dhcpcd.conf", "dest": "/etc/dhcpcd.conf" }
+    - {"src": "/var/www/html/config/raspap-bridge-br0.netdev", "dest": "/etc/systemd/network/raspap-bridge-br0.netdev" }
+    - {"src": "/var/www/html/config/raspap-br0-member-eth0.network", "dest": "/etc/systemd/network/raspap-br0-member-eth0.network" }
+    - {"src": "/var/www/html/config/config/config.php", "dest": "/var/www/html/includes/config.php" }
+        

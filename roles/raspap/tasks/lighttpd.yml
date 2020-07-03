@@ -7,9 +7,15 @@
 - name: Start lighttpd service and enable on boot
   service:
     name: lighttpd
-    state: restarted
+    state: force-reload
     enabled: yes
 
+- name: "systemctl enable nodered.service"
+  systemd:
+    name: lighttpd
+    state: started
+    enabled: yes    
+  
 - name: "Ensure /etc/sudoers contains lines"
   lineinfile:
     name: /etc/sudoers
@@ -42,3 +48,45 @@
   user:
     name: rpi
     group:  www-data
+
+- name: "/etc/dhcpcd.conf"
+  shell:
+    cmd: "cat /etc/dhcpcd.conf | sudo tee -a /etc/raspap/networking/defaults > /dev/null"
+
+- name: "Defaults from Raspberry Pi configuration"
+  lineinfile:
+    name: /etc/raspap/networking/defaults
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "hostname"
+    - "clientid"
+    - "persistent"
+    - "option rapid_commit"
+    - "option domain_name_servers, domain_name, domain_search, host_name"
+    - "option classless_static_routes"
+    - "option ntp_servers"
+    - "require dhcp_server_identifier"
+    - "slaac private"
+    - "nohook lookup-hostname"
+    
+    - "#denyinterfaces eth0 wlan0 #BRIDGED"    
+    - "# RaspAP br0 configuration"
+    - "interface br0"
+    - "# RaspAP wlan0 configuration"
+    - "interface wlan0"
+    - "static ip_address=10.3.141.1/24"
+    - "static routers=10.3.141.1"
+    - "static domain_name_server=9.9.9.9 1.1.1.1"    
+    - "# RaspAP uap0 configuration"
+    - "interface uap0"
+    - "static ip_address=192.168.50.1/24"
+    - "nohook wpa_supplicant"
+
+- name: "copy asound.conf"
+  copy:
+    src: /var/www/html/installers/configport.sh
+    dest: /etc/raspap/lighttpd/configport.sh
+    owner: www-data
+    group: www-data
+    mode: '0750'
