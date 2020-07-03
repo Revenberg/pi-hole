@@ -1,7 +1,8 @@
 ---
 
-- apt_repository:
-    repo: ppa:ondrej/php
+#- name: add ppa:ondrej/php apt_repository
+#  apt_repository:
+#    repo: ppa:ondrej/php
 
 - name: "install apt-get packages"
   apt: 
