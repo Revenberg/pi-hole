@@ -11,12 +11,6 @@
     owner: www-data
     group: www-data
 
-- name: Ensure /etc/raspap directory exists
-  file:
-    path: "/etc/raspap"
-    state: directory
-    recurse: yes
-
 - name: copy file
   copy:
     src: /var/www/html/raspap.php

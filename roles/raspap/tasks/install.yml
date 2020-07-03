@@ -8,3 +8,9 @@
     name: [ "software-properties-common", "curl", "lighttpd", "php7.3-cgi", "hostapd", "dnsmasq", "vnstat", "iptables-persistent" ]
     state: present
     update_cache: yes
+
+- name: Ensure /etc/raspap directory exists
+  file:
+    path: " /etc/raspap/networking"
+    state: directory
+    recurse: yes    
