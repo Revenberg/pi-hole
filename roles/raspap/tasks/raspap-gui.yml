@@ -18,9 +18,9 @@
     recurse: yes
 
 - name: copy file
-  file:
+  copy:
     src: /var/www/html/raspap.php
-    dest: /etc/raspap/
+    dest: /etc/raspap/raspap.php
     remote_src: yes  
     owner: www-data
     group: www-data
