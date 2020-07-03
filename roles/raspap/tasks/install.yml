@@ -9,6 +9,6 @@
 
 - name: "install apt-get packages"
   apt: 
-    name: [ "curl", "lighttpd", "php7.0-cgi", "hostapd", "dnsmasq", "vnstat" ]
+    name: [ "curl", "lighttpd", "php7.3-cgi", "hostapd", "dnsmasq", "vnstat" ]
     state: present
     update_cache: yes
