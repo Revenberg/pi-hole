@@ -13,7 +13,7 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     sudo apt-get install git -y
 
     # Install Ansible and Git on the machine.
-    sudo apt-get install python-pip git python-dev sshpass -y 
+    sudo apt-get install python-pip git python-dev sshpass -y
     sudo pip install ansible
     sudo pip install markupsafe
 
@@ -31,8 +31,8 @@ sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'  | while read line;
 do
-    ssh-keyscan -H $line >> ~/.ssh/known_hosts    
-done    
+    ssh-keyscan -H $line >> ~/.ssh/known_hosts
+done
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
 
 pswrd=$(cat /home/pi/.pswrd)
