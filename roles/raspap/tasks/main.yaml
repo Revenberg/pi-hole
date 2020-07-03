@@ -1,12 +1,5 @@
 ---
-##- include: install.yml
+- include: install.yml
 - include: lighttpd.yml
 - include: raspap-gui.yml
-
-#- copy:
-#    src: "{{ item }}"
-#    dest: /var/www/html
-#    owner: root
-#    mode: 600
-#  with_fileglob:
-#    - /html/*
+- include: hostapd.yml

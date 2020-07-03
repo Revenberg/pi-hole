@@ -1,0 +1,11 @@
+---
+- name: Ensure /etc/raspap directory exists
+  file:
+    path: "/etc/raspap/hostapd"
+    state: directory
+    recurse: yes
+  notify: reboot 
+  
+- name: copy file
+  shell:
+    cmd: "mv /var/www/html/installers/*log.sh /etc/raspap/hostapd"
