@@ -16,7 +16,7 @@
     enabled: no
     name: systemd-networkd
 
-- name: "copy asound.conf"
+- name: "copy config"
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"    
