@@ -4,10 +4,16 @@
     path: /var/www/html
     state: absent  
 
+- name: Ensure /var/www/html directory exists
+  file:
+    path: "/var/www/html"
+    state: directory
+    recurse: yes
+
 - name: Extract html.zip into /var/www/html
   unarchive:
-    src: html.zip
-    dest: /var/www/
+    src: raspap-webgui.zip
+    dest: /var/www/html/
     owner: www-data
     group: www-data
     mode: 600
