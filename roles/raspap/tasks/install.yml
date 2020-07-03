@@ -9,8 +9,8 @@
     state: present
     update_cache: yes
 
-- name: Ensure /etc/raspap directory exists
+- name: Ensure /etc/raspap/networking directory exists
   file:
-    path: " /etc/raspap/networking"
+    path: "/etc/raspap/networking"
     state: directory
     recurse: yes    
