@@ -5,5 +5,5 @@
   become_user: root
   become: yes
   roles:
-  #- general
+  - general
   - raspap
