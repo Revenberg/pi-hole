@@ -10,7 +10,7 @@
   shell:
     cmd: "mv /var/www/html/installers/*log.sh /etc/raspap/hostapd"
 
-- name: "systemctl update"
+- name: "systemctl stopped"
   systemd:
     name: systemd-networkd
     state: stopped
