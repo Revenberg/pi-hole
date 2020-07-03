@@ -4,19 +4,12 @@
     path: /var/www/html
     state: absent  
 
-- name: Ensure /var/www/html directory exists
-  file:
-    path: "/var/www/html"
-    state: directory
-    recurse: yes
-
 - name: Extract html.zip into /var/www/html
   unarchive:
     src: raspap-webgui.zip
-    dest: /var/www/html/
+    dest: /var/www/
     owner: www-data
     group: www-data
-    mode: 600
 
 - name: Ensure /etc/raspap directory exists
   file:
@@ -27,7 +20,7 @@
 - name: copy file
   file:
     src: /var/www/html/raspap.php
-    dest: /etc/raspap/raspap.php
+    dest: /etc/raspap/
     remote_src: yes  
     owner: www-data
     group: www-data
