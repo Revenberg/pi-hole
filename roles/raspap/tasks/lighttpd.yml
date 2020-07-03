@@ -7,7 +7,7 @@
 - name: Start lighttpd service and enable on boot
   service:
     name: lighttpd
-    state: restart
+    state: restarted
     enabled: yes
 
 - name: "Ensure /etc/sudoers contains lines"
