@@ -19,7 +19,17 @@
     owner: www-data
     group: www-data
 
+- name: copy file
+  copy:
+    src: raspap.auth
+    dest: /etc/raspap/raspap.auth
+    owner: www-data
+    group: www-data
+
+
 - name: Remove old /var/www/html/raspap.php
   file: 
     path:  /var/www/html/raspap.php
     state: absent    
+
+

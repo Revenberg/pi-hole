@@ -12,9 +12,9 @@
 
 - name: "systemctl stop systemd-networkd"
   systemd:
-    state: stopped
-    enabled: no
     name: systemd-networkd
+    state: stopped
+    enabled: no    
 
 - name: "copy config"
   copy:
@@ -28,4 +28,20 @@
     - {"src": "/var/www/html/config/raspap-bridge-br0.netdev", "dest": "/etc/systemd/network/raspap-bridge-br0.netdev" }
     - {"src": "/var/www/html/config/raspap-br0-member-eth0.network", "dest": "/etc/systemd/network/raspap-br0-member-eth0.network" }
     - {"src": "/var/www/html/config/config.php", "dest": "/var/www/html/includes/config.php" }
-        
+   remote_src: yes
+
+#- name: sudo systemctl unmask hostapd
+#  shell:
+#    cmd: "sudo systemctl unmask hostapd"
+
+- name: "systemctl stop systemd-networkd"
+  systemd:
+    name: systemd-networkd
+    state: started
+    enabled: yes
+
+- name: "copy hostapd.conf"
+  copy:
+    src: "hostapd.conf"
+    dest: "/etc/hostapd/hostapd.conf"    
+      
