@@ -3,10 +3,6 @@
   shell:
     cmd: "lighttpd-enable-mod fastcgi-php"
 
-- name: lighttpd-enable-mod fastcgi-php
-  service:
-    cmd: "lighttpd-enable-mod fastcgi-php"
-
 - name: Start lighttpd service and enable on boot
   service:
     name: lighttpd
