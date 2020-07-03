@@ -27,5 +27,5 @@
     - {"src": "/var/www/html/config/dhcpcd.conf", "dest": "/etc/dhcpcd.conf" }
     - {"src": "/var/www/html/config/raspap-bridge-br0.netdev", "dest": "/etc/systemd/network/raspap-bridge-br0.netdev" }
     - {"src": "/var/www/html/config/raspap-br0-member-eth0.network", "dest": "/etc/systemd/network/raspap-br0-member-eth0.network" }
-    - {"src": "/var/www/html/config/config/config.php", "dest": "/var/www/html/includes/config.php" }
+    - {"src": "/var/www/html/config/config.php", "dest": "/var/www/html/includes/config.php" }
         
