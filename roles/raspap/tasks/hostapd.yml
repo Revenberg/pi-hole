@@ -11,8 +11,7 @@
     cmd: "mv /var/www/html/installers/*log.sh /etc/raspap/hostapd"
 
 - name: "systemctl update"
-  shell: 
-    cmd: |
+  shell: |
       systemctl daemon-reload
       systemctl enable raspapd.service
       cp /var/www/html/config/default_hostapd /etc/default/hostapd
