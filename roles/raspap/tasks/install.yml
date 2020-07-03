@@ -1,12 +1,4 @@
 ---
-- apt_repository:
-    repo: deb http://mirrordirector.raspbian.org/raspbian jessie main contrib non-free rpi
-    state: present
-
-- name: "apt-get update"
-  apt: 
-    update_cache: yes    
-
 - name: "install apt-get packages"
   apt: 
     name: [ "curl", "lighttpd", "php7.3-cgi", "hostapd", "dnsmasq", "vnstat" ]
