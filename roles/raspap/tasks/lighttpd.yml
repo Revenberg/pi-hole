@@ -2,6 +2,7 @@
 - name: lighttpd-enable-mod fastcgi-php
   shell:
     cmd: "lighttpd-enable-mod fastcgi-php"
+  ignore_errors: true
 
 - name: Start lighttpd service and enable on boot
   service:
