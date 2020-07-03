@@ -7,7 +7,7 @@
 - name: Start lighttpd service and enable on boot
   service:
     name: lighttpd
-    state: force-reload
+    state: reload
     enabled: yes
 
 - name: "systemctl enable nodered.service"
