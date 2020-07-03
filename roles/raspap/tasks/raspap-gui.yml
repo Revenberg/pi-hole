@@ -1,0 +1,7 @@
+---
+- name: Extract html.zip into /var/www/html
+  unarchive:
+    src: html.zip
+    dest: /var/www/
+    owner: root
+    mode: 600
