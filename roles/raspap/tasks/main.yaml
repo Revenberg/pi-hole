@@ -4,7 +4,6 @@
     name: [ "curl", "lighttpd", "php7.0-cgi", "hostapd", "dnsmasq", "vnstat" ]
     state: present
     update_cache: yes
-    cache_valid_time: 3600
 
 - name: lighttpd-enable-mod fastcgi-php
   shell:
