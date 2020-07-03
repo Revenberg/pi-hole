@@ -45,10 +45,9 @@
     - "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/disablelog.sh"  
 
 - name: Add the user 'rpi' to group www-data
-  user:
-    name: rpi
-    group:  www-data
-
+  shell:
+    cmd: "usermod -a -G www-data rpi"
+    
 - name: "/etc/dhcpcd.conf"
   shell:
     cmd: "cat /etc/dhcpcd.conf | sudo tee -a /etc/raspap/networking/defaults > /dev/null"

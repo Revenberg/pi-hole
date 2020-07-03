@@ -4,7 +4,7 @@
 #    cmd: "add-apt-repository -y ppa:ondrej/php"
 
 - name: "install apt-get packages"
-  apt: 
+  apt:
     name: [ "software-properties-common", "curl", "lighttpd", "php7.3-cgi", "hostapd", "dnsmasq", "vnstat", "iptables-persistent" ]
     state: present
     update_cache: yes
@@ -13,5 +13,10 @@
   file:
     path: "/etc/raspap/networking"
     state: directory
-    recurse: yes    
-    
+    recurse: yes
+
+- name: Ensure /etc/raspap/lighttpd directory exists
+  file:
+    path: "/etc/raspap/lighttpd"
+    state: directory
+    recurse: yes
