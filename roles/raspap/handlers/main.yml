@@ -1,3 +1,5 @@
 ---
 - name: reboot
-  reboot:
+  #reboot:
+  debug: 
+    msg: "reboot"
