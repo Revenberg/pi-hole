@@ -37,3 +37,8 @@
     - "www-data ALL=(ALL) NOPASSWD:/bin/cp /etc/raspap/networking/dhcpcd.conf /etc/dhcpcd.conf"
     - "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/enablelog.sh"
     - "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/disablelog.sh"  
+
+- name: Add the user 'rpi' to group www-data
+  user:
+    name: rpi
+    group:  www-data
