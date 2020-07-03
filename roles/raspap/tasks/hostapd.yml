@@ -30,7 +30,7 @@
     - {"src": "/var/www/html/config/raspap-br0-member-eth0.network", "dest": "/etc/systemd/network/raspap-br0-member-eth0.network" }
     - {"src": "/var/www/html/config/config.php", "dest": "/var/www/html/includes/config.php" }
    
-- name: "systemctl stop systemd-networkd"
+- name: "systemctl start systemd-networkd"
   systemd:
     name: systemd-networkd
     state: started
