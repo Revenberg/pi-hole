@@ -12,7 +12,7 @@
 
 - name: "systemctl stop systemd-networkd"
   systemd:
-    state: stop
+    state: stopped
     enabled: no
     name: systemd-networkd
 
