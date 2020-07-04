@@ -6,9 +6,9 @@
     recurse: yes
   notify: reboot 
 
-- name: copy file
-  shell:
-    cmd: "mv /var/www/html/installers/*log.sh /etc/raspap/hostapd"
+#- name: copy file
+#  shell:
+#    cmd: "mv /var/www/html/installers/*log.sh /etc/raspap/hostapd"
 
 #- name: "systemctl stopped"
 #  systemd:
@@ -39,4 +39,6 @@
 #  copy:
 #    src: "hostapd.conf"
 #    dest: "/etc/hostapd/hostapd.conf"    
-      
+
+- debug:
+    msg: "end"      

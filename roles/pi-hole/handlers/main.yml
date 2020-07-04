@@ -1,3 +1,4 @@
 ---
 - name: reboot
-  reboot:
+  debug:
+    msg: "reboot general"
