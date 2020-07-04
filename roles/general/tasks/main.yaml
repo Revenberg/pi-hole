@@ -23,11 +23,3 @@
   shell:
     cmd: "raspi-config --expand-rootfs"
   notify: reboot    
-
-- debug: msg="the value of foo.txt is {{lookup('file', 'pswrdfile') }}"
-
-- name: Set a new password for the default "pi" account
-  become: yes
-  user:
-    name: "pi"
-    password: "{{ pi_password }}"

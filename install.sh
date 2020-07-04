@@ -25,6 +25,8 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     git clone https://github.com/Revenberg/pi-hole.git
 fi
 
+ansible-playbook --connection=local 127.0.0.1 /home/pi/pi-hole/changepassword.yml
+
 mkdir /home/pi/.ssh 2>/dev/null
 
 sudo ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key
