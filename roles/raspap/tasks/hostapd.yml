@@ -35,8 +35,8 @@
     state: started
     enabled: yes
   
-#- name: "copy hostapd.conf"
-#  copy:
-#    src: "hostapd.conf"
-#    dest: "/etc/hostapd/hostapd.conf"    
+- name: "copy hostapd.conf"
+  copy:
+    src: "hostapd.conf"
+    dest: "/etc/hostapd/hostapd.conf"    
       
