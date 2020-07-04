@@ -23,9 +23,9 @@ if [ ! -f "/home/pi/.pswrd" ]; then
     mkdir /home/pi/ansible
 
     git clone https://github.com/Revenberg/pi-hole.git
-fi
 
-ansible-playbook --connection=local 127.0.0.1 /home/pi/pi-hole/changepassword.yml
+    ansible-playbook --connection=local /home/pi/pi-hole/changepassword.yml
+fi
 
 mkdir /home/pi/.ssh 2>/dev/null
 
