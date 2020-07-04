@@ -19,7 +19,7 @@
   apt:
     autoremove: yes
 
-- name: expand-rootfs
-  shell:
-    cmd: "raspi-config --expand-rootfs"
-  notify: reboot    
+#- name: expand-rootfs
+#  shell:
+#    cmd: "raspi-config --expand-rootfs"
+#  notify: reboot    
