@@ -86,9 +86,9 @@
     group: www-data
     mode: '0750'
 
-- name: replace line
-  lineinfile: 
-    path: /etc/lighttpd/lighttpd.conf
-    regexp: '^(.*)server.port(.*)$' 
-    line: 'server.port = 8080'
-    backrefs: yes
+#- name: replace line
+#  lineinfile: 
+#    path: /etc/lighttpd/lighttpd.conf
+#    regexp: '^(.*)server.port(.*)$' 
+#    line: 'server.port = 8080'
+#    backrefs: yes
