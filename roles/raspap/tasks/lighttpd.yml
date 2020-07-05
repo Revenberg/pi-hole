@@ -48,6 +48,11 @@
   shell:
     cmd: "usermod -a -G www-data pi"
     
+- name: "rm /etc/raspap/networking/defaults"    
+  file:
+    path: "/etc/raspap/networking/defaults"
+    state: absent
+
 - name: "Defaults from Raspberry Pi configuration"
   lineinfile:
     name: /etc/raspap/networking/defaults
