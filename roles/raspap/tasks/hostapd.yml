@@ -42,3 +42,11 @@
   with_items:
     - {"src": "hostapd.conf", dest: "/etc/hostapd/hostapd.conf" }
     - {"src": "hostapd", dest: "/etc/default/hostapd" }
+
+- name: Start hostapd service unmask
+  shell:
+    cmd: "sudo systemctl unmask hostapd"
+
+- name: Start hostapd service enable
+  shell:
+    cmd: "sudo systemctl enable hostapd"
