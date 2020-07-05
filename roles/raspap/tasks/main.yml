@@ -1,7 +1,7 @@
 ---
 - name: "Installing RaspAP"
   shell:
-    cmd: "wget -q https://git.io/voEUQ -O /tmp/raspap && bash /tmp/raspap"
+    cmd: "wget -q https://git.io/voEUQ -O /tmp/raspap && bash /tmp/raspap -y"
 
 - name: copy file
   copy:
@@ -10,7 +10,7 @@
     owner: www-data
     group: www-data
   notify: reboot
-  
+
 - name: "copy files"
   copy:
     src: "{{ item.src }}"
