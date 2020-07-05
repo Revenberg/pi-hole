@@ -4,7 +4,7 @@
     path: "/etc/raspap/hostapd"
     state: directory
     recurse: yes
-  notify: reboot 
+  notify: reboot
 
 - name: copy file
   shell:
@@ -14,11 +14,11 @@
 #  systemd:
 #    name: systemd-networkd
 #    state: stopped
-  
+
 - name: "copy config"
   copy:
     src: "{{ item.src }}"
-    dest: "{{ item.dest }}"    
+    dest: "{{ item.dest }}"
     remote_src: yes
   with_items:
     - {"src": "/var/www/html/config/default_hostapd", "dest": "/etc/default/hostapd"}
@@ -28,17 +28,17 @@
 #    - {"src": "/var/www/html/config/raspap-bridge-br0.netdev", "dest": "/etc/systemd/network/raspap-bridge-br0.netdev" }
 #    - {"src": "/var/www/html/config/raspap-br0-member-eth0.network", "dest": "/etc/systemd/network/raspap-br0-member-eth0.network" }
     - {"src": "/var/www/html/config/config.php", "dest": "/var/www/html/includes/config.php" }
-  
+
 - name: "systemctl start systemd-networkd"
   systemd:
     name: systemd-networkd
     state: started
     enabled: yes
-  
+
 - name: "copy hostapd.conf"
   copy:
-    src: "hostapd.conf"
-    dest: "/etc/hostapd/hostapd.conf"    
-
-- debug:
-    msg: "end"      
+    src: "{{ item.src }}"
+    dest: "{{ imte.dest }}"
+  with_items:
+    - {"src": "hostapd.info", dest: "/etc/hostapd/hostapd.conf" }
+    - {"src": "hostapd", dest: "/etc/default/hostapd" }
