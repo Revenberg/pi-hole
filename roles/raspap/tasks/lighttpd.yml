@@ -44,9 +44,9 @@
     - "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/enablelog.sh"
     - "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/disablelog.sh"  
 
-- name: Add the user 'rpi' to group www-data
+- name: Add the user 'rp' to group www-data
   shell:
-    cmd: "usermod -a -G www-data rpi"
+    cmd: "usermod -a -G www-data pi"
     
 - name: "Defaults from Raspberry Pi configuration"
   lineinfile:
