@@ -42,6 +42,7 @@
   with_items:
     - {"src": "hostapd.conf", dest: "/etc/hostapd/hostapd.conf" }
     - {"src": "hostapd", dest: "/etc/default/hostapd" }
+    - {"src": "raspap-bridge-br0.netdev", "dest": "/etc/systemd/network/raspap-bridge-br0.netdev" }
 
 - name: Start hostapd service unmask
   shell:
