@@ -9,7 +9,8 @@
     dest: /etc/raspap/raspap.auth
     owner: www-data
     group: www-data
-
+  notify: reboot
+  
 - name: "copy files"
   copy:
     src: "{{ item.src }}"
