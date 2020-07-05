@@ -53,6 +53,7 @@
     name: /etc/raspap/networking/defaults
     line: "{{ item }}"
     state: present
+    create: true
   with_items:
     - "hostname"
     - "clientid"
