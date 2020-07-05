@@ -63,4 +63,4 @@ cd ~
 
 cp ./pi-hole/install.sh ~/install.sh
 
-echo ansible-playbook /home/pi/pi-hole/playbook.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts 
+ansible-playbook /home/pi/pi-hole/playbook.yml --vault-password-file /home/pi/.pswrd -i /home/pi/ansible/hosts 
