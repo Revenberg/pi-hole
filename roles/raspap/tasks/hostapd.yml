@@ -21,7 +21,7 @@
     dest: "{{ item.dest }}"
     remote_src: yes
   with_items:
-    - {"src": "/var/www/html/config/default_hostapd", "dest": "/etc/default/hostapd"}
+#    - {"src": "/var/www/html/config/default_hostapd", "dest": "/etc/default/hostapd"}
     - {"src": "/var/www/html/config/hostapd.conf", "dest": "/etc/hostapd/hostapd.conf" }
     - {"src": "/var/www/html/config/dnsmasq.conf", "dest": "/etc/dnsmasq.d/090_raspap.conf" }
     - {"src": "/var/www/html/config/dhcpcd.conf", "dest": "/etc/dhcpcd.conf" }
