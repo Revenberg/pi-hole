@@ -43,15 +43,15 @@
 
 - name: Start hostapd service unmask
   shell:
-    cmd: "sudo systemctl unmask hostapd"
+    cmd: "systemctl unmask hostapd"
 
 - name: Start hostapd service enable
   shell:
-    cmd: "sudo systemctl enable hostapd"
+    cmd: "systemctl enable hostapd"
 
 - name: Start hostapd service restart
   shell:
-    cmd: "sudo systemctl restart hostapd"
+    cmd: "systemctl restart hostapd"
 
 
 - name: Start hostapd service and enable on boot
