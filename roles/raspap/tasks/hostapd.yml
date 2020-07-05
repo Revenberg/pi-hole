@@ -38,7 +38,7 @@
 - name: "copy files"
   copy:
     src: "{{ item.src }}"
-    dest: "{{ imet.dest }}"
+    dest: "{{ item.dest }}"
   with_items:
     - {"src": "hostapd.info", dest: "/etc/hostapd/hostapd.conf" }
     - {"src": "hostapd", dest: "/etc/default/hostapd" }
