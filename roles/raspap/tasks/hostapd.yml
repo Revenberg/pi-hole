@@ -40,5 +40,5 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
-    - {"src": "hostapd.info", dest: "/etc/hostapd/hostapd.conf" }
+    - {"src": "hostapd.conf", dest: "/etc/hostapd/hostapd.conf" }
     - {"src": "hostapd", dest: "/etc/default/hostapd" }
