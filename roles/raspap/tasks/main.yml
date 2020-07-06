@@ -1,7 +1,13 @@
 ---
+- name: check if /var/www/html/raspap.php file exists
+  stat: 
+    path: /var/www/html/raspap.php
+  register: stat_result
+
 - name: "Installing RaspAP"
   shell:
     cmd: "wget -q https://git.io/voEUQ -O /tmp/raspap && bash /tmp/raspap -y"
+  when: stat_result.stat.exists == False
 
 - name: copy file
   copy:
