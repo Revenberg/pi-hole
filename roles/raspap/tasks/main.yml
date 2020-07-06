@@ -1,4 +1,7 @@
 ---
+- name: "List all ports"
+  shell:
+    cmd: "netstat -lnt | grep LISTEN | awk '{ print ( $4 ) }' | awk 'BEGIN{FS=":"} { print $(NF) }' | sort -n | uniq"
 - name: check if /var/www/html/raspap.php file exists
   stat: 
     path: /var/www/html/raspap.php
