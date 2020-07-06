@@ -1,4 +1,16 @@
 ---
+- name: "remove reroute all trafic to 192.168.1.1"
+  lineinfile: 
+    path: /etc/dnsmasq.conf    
+    line: 'address=/#/192.168.1.1'
+    state: absent
+
+- name: Start dnsmasq service and enable on boot
+  service:
+    name: lighttpd
+    state: reloaded
+    enabled: yes
+
 - name: "install apt-get packages"
   apt: 
     name: [ "curl" ]
