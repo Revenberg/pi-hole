@@ -46,8 +46,8 @@
 
 - name: Start lighttpd service and enable on boot
   service:
-    name: lighttpdcp
-    state: reloaded
+    name: lighttpd
+    state: started
     enabled: yes
 
 #- name: "reroute all trafic to 192.168.5.1"
