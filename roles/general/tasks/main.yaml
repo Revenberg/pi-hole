@@ -7,7 +7,7 @@
 
 - name: Start dnsmasq service and enable on boot
   service:
-    name: lighttpd
+    name: dnsmasq
     state: reloaded
     enabled: yes
 
