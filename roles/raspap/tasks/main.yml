@@ -6,7 +6,7 @@
 
 - name: "debug"  
   debug:
-    msg: "{{ result }}"
+    msg: "{{ result.stdout_lines }}"
 
 - name: check if /var/www/html/raspap.php file exists
   stat: 
