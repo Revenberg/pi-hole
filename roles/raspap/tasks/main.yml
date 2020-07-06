@@ -37,12 +37,12 @@
   lineinfile: 
     path: /etc/lighttpd/lighttpd.conf
     regexp: '^server.port(.*)$' 
-    line: 'server.port = 8080'
+    line: 'server.port = 80'
     backrefs: yes
 
 - name: Start lighttpd service and enable on boot
   service:
-    name: lighttpd
+    name: lighttpdcp
     state: reloaded
     enabled: yes
 
