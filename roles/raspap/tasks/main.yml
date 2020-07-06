@@ -7,7 +7,7 @@
 - name: "debug"  
   debug:
     msg: "{{ result }}"
-    
+
 - name: check if /var/www/html/raspap.php file exists
   stat: 
     path: /var/www/html/raspap.php
@@ -43,7 +43,6 @@
     path: /etc/lighttpd/lighttpd.conf
     regexp: '^server.port(.*)$' 
     line: 'server.port = 80'
-    backrefs: yes
 
 - name: Start lighttpd service and enable on boot
   service:
