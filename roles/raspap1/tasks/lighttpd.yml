@@ -9,7 +9,8 @@
     name: lighttpd
     state: reloaded
     enabled: yes
-
+  ignore_errors: true
+  
 - name: "systemctl enable nodered.service"
   systemd:
     name: lighttpd
