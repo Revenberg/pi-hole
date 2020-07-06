@@ -25,6 +25,12 @@
     - {"src": "hostapd.conf", dest: "/etc/hostapd/hostapd.conf" }
     - {"src": "dhcpcd.conf", dest: "/etc/dhcpcd.conf" }    
 
+- name: Start dhcpcd service and enable on boot
+  service:
+    name: dhcpcd
+    state: reloaded
+    enabled: yes
+
 - name: replace line
   lineinfile: 
     path: /etc/lighttpd/lighttpd.conf
@@ -32,11 +38,17 @@
     line: 'server.port = 8080'
     backrefs: yes
 
-#- name: "reroute all trafic to 192.168.1.1"
+- name: Start lighttpd service and enable on boot
+  service:
+    name: lighttpd
+    state: reloaded
+    enabled: yes
+
+#- name: "reroute all trafic to 192.168.5.1"
 #  lineinfile: 
 #    path: /etc/dnsmasq.conf    
-#    line: 'address=/#/192.168.1.1'
-    
+#    line: 'address=/#/192.168.5.1'
+
 - name: Start dnsmasq service and enable on boot
   service:
     name: dnsmasq
