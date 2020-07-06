@@ -17,3 +17,17 @@
     dest: "{{ item.dest }}"
   with_items:
     - {"src": "hostapd.conf", dest: "/etc/hostapd/hostapd.conf" }
+    - {"src": "dhcpcd.conf", dest: "/etc/dhcpcd.conf" }    
+
+- name: replace line
+  lineinfile: 
+    path: /etc/lighttpd/lighttpd.conf
+    regexp: '^(.*)server.port(.*)$' 
+    line: 'server.port = 8080'
+    backrefs: yes
+
+- name: replace line
+  lineinfile: 
+    path: /etc/dnsmasq.conf    
+    line: 'address=/#/192.168.2.1'
+    
