@@ -60,3 +60,10 @@
 - name: "debug"  
   debug:
     msg: "{{ result.stdout_lines }}"
+
+- name: Start hostapd service and enable on boot
+  service:
+    name: hostapd
+    state: started
+    enabled: yes
+  
