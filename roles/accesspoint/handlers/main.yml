@@ -1,0 +1,10 @@
+---
+- name: reboot
+  debug:
+    msg: "reboot general"
+
+- name: restart machine
+  shell: sleep 2 && shutdown -r now
+  async: 1
+  poll: 0
+  ignore_errors: true

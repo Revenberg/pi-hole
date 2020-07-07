@@ -5,12 +5,17 @@
     line: 'address=/#/192.168.1.1'
     state: absent
   ignore_errors: true
+
 - name: Start dnsmasq service and enable on boot
   service:
     name: dnsmasq
     state: reloaded
     enabled: yes
   ignore_errors: true
+  
+- name: upgrade
+  apt: upgrade=yes
+  become: true
   
 - name: "install apt-get packages"
   apt: 
