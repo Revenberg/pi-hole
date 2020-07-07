@@ -7,23 +7,26 @@ server {
     listen 80 default_server;
     server_name _;
     location /mobile {
-      return 301 $scheme://192.168.1.104:6680/mobile;
+      return 301 $scheme://192.168.5.50:6680/mobile;
     }
     location /iris {
-      return 301 $scheme://192.168.1.104:6680/iris;
+      return 301 $scheme://192.168.5.50:6680/iris;
     }
     location /musicbox_webclient {
-      return 301 $scheme://192.168.1.104:6680/musicbox_webclient;
+      return 301 $scheme://192.168.5.50:6680/musicbox_webclient;
     }
     location /mopidy/ws {
-      return 301 $scheme://192.168.1.104:6680/mopidy/ws;
+      return 301 $scheme://192.168.5.50:6680/mopidy/ws;
     }
     location /mopidy {
-      return 301 $scheme://192.168.1.104:6680/mopidy;
+      return 301 $scheme://192.168.5.50:6680/mopidy;
+    }
+    location /wifi {
+      return 301 $scheme://192.168.5.50:8080/mopidy;
     }
     
     location / {
-      return 301 $scheme://192.168.1.104:6680/musicbox_webclient;
+      return 301 $scheme://192.168.5.50:6680/musicbox_webclient;
     }
 }
 

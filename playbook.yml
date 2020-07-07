@@ -7,5 +7,8 @@
   - general
   - raspap
   - hotspot
-  - python
   - mopidy-raspbian
+  - nginx
+  - minidlna
+  - music
+  - hifiberry  
