@@ -1,4 +1,3 @@
-#!/usr/bin/env ansible-playbook -i hosts --become -c paramiko
 ---
 - name: Ansible Playbook for configuring jukebox on Raspberry Pi
   hosts: rpi
