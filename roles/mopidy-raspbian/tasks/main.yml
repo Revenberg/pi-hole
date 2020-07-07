@@ -16,3 +16,12 @@
 - include: soundcloud.yml
 - include: mopidy_packages.yml
 - include: playlist.yml
+
+- name: "List all ports"
+  shell: |
+    netstat -lnt | grep LISTEN | awk '{ print ( $4 ) }' | awk 'BEGIN{FS=":"} { print $(NF) }' | sort -n | uniq
+  register: result
+
+- name: "debug"  
+  debug:
+    msg: "{{ result.stdout_lines }}"
