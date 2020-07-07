@@ -6,3 +6,6 @@
   roles:
   - general
   - raspap
+  - hotspot
+  - python
+  - mopidy

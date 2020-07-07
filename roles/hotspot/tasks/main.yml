@@ -20,8 +20,8 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "{{ item.mode }}"
-  with_items: 
-   - { src: "hostapd.conf", dest: "/etc/hostapd/hostapd.conf", mode: "0644" } 
+  with_items:
+   - { src: "hostapd.conf", dest: "/etc/hostapd/hostapd.conf", mode: "0644" }
    - { src: "dnsmasq.conf", dest: "/etc/dnsmasq.conf", mode: "0644" }
    - { src: "autohotspot.service", dest: "/etc/systemd/system/autohotspot.service", mode: "0755" }
    - { src: "autohotspotN", dest: "/usr/bin/autohotspotN", mode: "0755" }
@@ -55,16 +55,16 @@
     name: "autohotspot"
     enabled: yes
     state: started
-  notify: reboot
 
-- name: "Ensure a job that runs every 5 minutes"
-  cron:
-    name: "check dirs"
-    minute: "30"
-    job: "sudo /usr/bin/autohotspotN >/dev/null 2>&1"
+#- name: "Ensure a job that runs every 5 minutes"
+#  cron:
+#    name: "check dirs"
+#    minute: "*/5"
+#    job: "sudo /usr/bin/autohotspotN >/dev/null 2>&1"
 
 - name: "add nopasswd to /etc/sudoers"
   lineinfile:
     name: /etc/sudoers
     line: "pi ALL=NOPASSWD: /usr/bin/autohotspotN"
     state: present
+    

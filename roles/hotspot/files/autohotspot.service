@@ -7,4 +7,3 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/autohotspotN
 [Install]
 WantedBy=multi-user.target
-
