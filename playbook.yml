@@ -5,6 +5,7 @@
   become: yes
   roles:
   - general
+  - usbdrive  
   - raspap
   - hotspot
   - mopidy-raspbian
