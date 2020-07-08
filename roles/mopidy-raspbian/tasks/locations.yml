@@ -4,6 +4,6 @@
       state: directory
       recurse: yes
   with_items:
-    - '{{ mopidy_media_dir }}/playlists'
+    - '{{ mopidy_media_dir }}/playlist'
     - '{{ mopidy_media_dir }}/music'
     - '{{ mopidy_media_dir }}/movie'
