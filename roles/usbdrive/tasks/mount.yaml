@@ -1,5 +1,5 @@
 ---
-- name: "get devices exfat"
+- name: "get devices {{ device_type.code }}"
   shell:
      cmd: "lsblk -o label,name,PARTTYPE | grep '{{ device_type.code }}' | grep sd | cut -d ' ' -f1 | sed '/^$/d'"
   register: result
