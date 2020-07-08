@@ -1,0 +1,26 @@
+---
+- name: "get devices exfat"
+  shell:
+     cmd: "lsblk -o label,name,PARTTYPE | grep '{{ device_type.code }}' | grep sd | cut -d ' ' -f1 | sed '/^$/d'"
+  register: result
+
+- name: Creates directory
+  file:
+    path: /media/{{ loop_item | lower }}
+    state: directory
+  with_items: "{{ result.stdout_lines }}"
+loop_control:
+    loop_var: loop_item
+  
+- name: Mount up device by label
+  mount:
+    path: /media/{{ loop_item | lower }}
+    src: "LABEL={{ loop_item }}"
+    boot: False
+    opts: "user,nofail"
+    fstype: "{{ device_type.value }}"
+    state: present
+  with_items: "{{ result.stdout_lines }}"
+  loop_control:
+    loop_var: loop_item
+  ignore_errors: True
