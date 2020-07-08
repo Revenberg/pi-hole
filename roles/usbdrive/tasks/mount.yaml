@@ -9,7 +9,7 @@
     path: /media/{{ loop_item | lower }}
     state: directory
   with_items: "{{ result.stdout_lines }}"
-loop_control:
+  loop_control:
     loop_var: loop_item
   
 - name: Mount up device by label
