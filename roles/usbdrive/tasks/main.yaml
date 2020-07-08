@@ -18,8 +18,8 @@
     line: 'MountFlags=shared'
 
 - name: "mount all types"
-  include_tasks: mount.yaml  
-  with_item:
+  import_tasks: mount.yaml  
+  with_items:
   - { code: "0x7", value: "exfat" }
   - { code: "0xc", value: "vfat" }
   loop_control:
