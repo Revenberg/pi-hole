@@ -8,6 +8,7 @@
   file:
     path: /media/{{ loop_item | lower }}
     state: directory
+    mode: 0777
   with_items: "{{ result.stdout_lines }}"
   loop_control:
     loop_var: loop_item
