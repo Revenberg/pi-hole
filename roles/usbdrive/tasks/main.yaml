@@ -17,7 +17,7 @@
     path: /lib/systemd/system/systemd-udevd.service
     line: 'MountFlags=shared'
 
-- include: mount.yml
+- include: mount.yaml
   with_item:
     - { code: "0x7", value: "exfat" }
     - { code: "0xc", devicevalue_type_value: "vfat" }
