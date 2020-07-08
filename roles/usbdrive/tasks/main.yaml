@@ -17,15 +17,28 @@
     path: /lib/systemd/system/systemd-udevd.service
     line: 'MountFlags=shared'
 
+- name: "get devices"
+  shell:
+     cmd: "lsblk -o label,name | grep sd | cut -d ' ' -f1 | sed '/^$/d'"
+  register: result
+
+- name: "usb show devices"  
+  debug:
+    msg: "{{ result.stdout_lines }}"
+
+- debug:
+    msg: "{{ item }}"
+  with_items: "{{ result.stdout_lines }}"
+
 - name: Creates directory
   file:
     path: /media/{{ item }}
     state: directory
-  with_items: "{{ labels }}"
+  with_items: "{{ labels | lower }}"
 
 - name: Mount up device by label
   mount:
-    path: /media/{{ item }}
+    path: /media/{{ item | lower }}
     src: "LABEL={{ item }}"
     boot: False
     opts: "user,nofail"
