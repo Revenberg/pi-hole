@@ -34,6 +34,11 @@
   with_items: "{{ labels }}"
   ignore_errors: True
 
-- name: usb show devices
+- name: "usb devices"
   shell:
     cmd: "lsblk -o name,mountpoint,label,size,uuid"
+  register: result
+
+- name: "usb show devices"  
+  debug:
+    msg: "{{ result.stdout_lines }}"
