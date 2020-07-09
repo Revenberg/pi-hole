@@ -41,7 +41,7 @@
     state: started
     enabled: yes
 
-#- name: "reroute all trafic to 192.168.5.1"
+#- name: "reroute all trafic to 192.168.50.1"
 #  lineinfile: 
 #    path: /etc/dnsmasq.conf    
 #    line: 'address=/#/192.168.50.1'
