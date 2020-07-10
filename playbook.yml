@@ -8,7 +8,7 @@
   - usbdrive  
   - raspap
   - mopidy-raspbian
-  - nginx
+  #- nginx
   - minidlna
   - music
   - hifiberry  

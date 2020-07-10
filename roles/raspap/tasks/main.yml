@@ -29,11 +29,11 @@
   shell:
     cmd: "service dhcpcd reload"
 
-- name: replace line
-  lineinfile: 
-    path: /etc/lighttpd/lighttpd.conf
-    regexp: '^server.port(.*)$' 
-    line: 'server.port = 8080'
+#- name: replace line
+#  lineinfile: 
+#    path: /etc/lighttpd/lighttpd.conf
+#    regexp: '^server.port(.*)$' 
+#    line: 'server.port = 8080'
 
 - name: Start lighttpd service and enable on boot
   service:
