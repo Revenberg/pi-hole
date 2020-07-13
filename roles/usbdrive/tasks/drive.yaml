@@ -1,0 +1,30 @@
+---
+- name: Creates directory
+  file:
+    path: /media/{{ loop_item | lower }}
+    state: directory
+    mode: 0777
+  
+- name: Mount up device by label
+  mount:
+    path: /media/{{ loop_item | lower }}
+    src: "LABEL={{ loop_item }}"
+    boot: False
+    opts: "user,nofail"
+    fstype: "{{ device_type.value }}"
+    state: present
+  ignore_errors: True
+
+- name: "get devices name"
+  shell:
+     cmd: "lsblk -o label,name,PARTTYPE -r | grep {{ loop_item }} | cut -d ' ' -f2  | sed '/^$/d' "
+  register: result_1
+
+- name: Set PiHole to update every week
+  cron:
+    name: "sudo ./fsck.fat -V /dev/{{ device_item }}"
+    reboot: true
+    job: "sudo ./fsck.fat -V /dev/{{ device_item }} >/dev/null 2>&1"
+    with_items: "{{ result_1.stdout_lines }}"
+  loop_control:
+    loop_var: device_item
