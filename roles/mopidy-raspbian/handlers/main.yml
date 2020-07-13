@@ -1,7 +1,7 @@
 ---
 - name: play wav sound
   shell:
-    cmd: "aplay --device=hw:1,0 --rate=44100 --format=S16_LE --channels=2 /home/pi/example.wav -d 5"
+    cmd: "aplay --device=hw:{{ hifiberry_hw }},0 --rate=44100 --format=S16_LE --channels=2 /home/pi/example.wav -d 5"
 
 - name: restart mopidy
   service:
