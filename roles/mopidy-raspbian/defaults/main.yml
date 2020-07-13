@@ -9,6 +9,7 @@ mopidy_playlist_dir: '{{ mopidy_media_dir }}/playlist'
 mopidy_music_dir: '{{ mopidy_media_dir }}/music'
 mopidy_movie_dir: '{{ mopidy_media_dir }}/movie'
 mopidy_debug_dir: '/var/log/mopidy'
+hifiberry_hw: 0
 
 #mopidy_packages:
 #  - upmpdcli
@@ -57,7 +58,7 @@ mopidy_settings:
   - { section: 'websettings', option: 'config_file', value: '/etc/mopidy/mopidy.conf' }
   - { section: 'jukepi', option: 'enabled', value: 'true' }
   - { section: 'alsamixer', option: 'enabled', value: 'true' }
-  - { section: 'alsamixer', option: 'card', value: '0' }
+  - { section: 'alsamixer', option: 'card', value: '{{ hifiberry_hw }}' }
   - { section: 'alsamixer', option: 'control', value: 'PCM' }
   - { section: 'alsamixer', option: 'min_volume', value: '0' }
   - { section: 'alsamixer', option: 'max_volume ', value: '100' }

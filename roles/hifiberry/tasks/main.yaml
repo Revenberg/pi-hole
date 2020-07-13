@@ -28,10 +28,12 @@
     - "snd_soc_hifiberry_dacplus"
   notify: reboot
 
-- name: "copy asound.conf"
-  copy:
-    src: asound.conf
+- name: "copy asound.conf"  
+  template:
+    src: templates/asound.conf.j2
     dest: /etc/asound.conf
+    mode: '0775'
+
 
 #- name: "set time to RTC"
 #  lineinfile:
