@@ -6,10 +6,10 @@
   roles:
   - general
   - usbdrive  
-  #- raspap
+  - raspap
   - mopidy-raspbian
   #- nginx
-  #- minidlna
+  - minidlna
   - music
   - hifiberry  
   - hotspot

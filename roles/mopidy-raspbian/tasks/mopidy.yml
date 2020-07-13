@@ -53,3 +53,8 @@
     name: "mopidy local scan"
     minute: "0"
     job: "sudo mopidyctl local scan >/dev/null 2>&1"
+
+- name: "sudo mopidyctl local scan"
+  shell:
+    cmd: "sudo mopidyctl local scan"
+ 
