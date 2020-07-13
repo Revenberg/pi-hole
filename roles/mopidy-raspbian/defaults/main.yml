@@ -57,7 +57,7 @@ mopidy_settings:
   - { section: 'websettings', option: 'config_file', value: '/etc/mopidy/mopidy.conf' }
   - { section: 'jukepi', option: 'enabled', value: 'true' }
   - { section: 'alsamixer', option: 'enabled', value: 'true' }
-  - { section: 'alsamixer', option: 'card', value: '1' }
+  - { section: 'alsamixer', option: 'card', value: '0' }
   - { section: 'alsamixer', option: 'control', value: 'PCM' }
   - { section: 'alsamixer', option: 'min_volume', value: '0' }
   - { section: 'alsamixer', option: 'max_volume ', value: '100' }
