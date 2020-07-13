@@ -48,7 +48,7 @@
     - { option: hostname , value: "{{ mopidy_raspbian_hostname }}" }
   notify: scan mopidy
 
-- name: "mopidy local scan runs on 12 hour"
+- name: "mopidy local scan runs on 4 times a hour"
   cron:
     name: "mopidy local scan"
     minute: "0,15,30,45"
