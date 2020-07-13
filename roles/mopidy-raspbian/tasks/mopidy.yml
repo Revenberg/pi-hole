@@ -51,6 +51,7 @@
 - name: "mopidy local scan runs every 1 hours"
   cron:
     name: "mopidy local scan"
-    minute: "0,15,30,45"
+    minute: "0"
+    hour: "12"
     job: "sudo mopidyctl local scan >/dev/null 2>&1"
  
