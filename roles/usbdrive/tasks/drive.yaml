@@ -20,11 +20,11 @@
      cmd: "lsblk -o label,name,PARTTYPE -r | grep {{ loop_item }} | cut -d ' ' -f2  | sed '/^$/d' "
   register: result_1
 
-- name: Set PiHole to update every week
+- name: "Set fsck on boot  {{ result_1}}"
   cron:
     name: "sudo ./fsck.fat -V /dev/{{ device_item }}"
     reboot: true
     job: "sudo ./fsck.fat -V /dev/{{ device_item }} >/dev/null 2>&1"
-    with_items: "{{ result_1.stdout_lines }}"
+  with_items: "{{ result_1.stdout_lines }}"
   loop_control:
     loop_var: device_item
