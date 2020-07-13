@@ -55,3 +55,6 @@
     hour: "12"
     job: "sudo mopidyctl local scan >/dev/null 2>&1"
  
+- name: "execute manully"
+  debug:
+    msg: "sudo mopidyctl local scan"
