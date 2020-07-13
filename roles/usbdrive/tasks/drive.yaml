@@ -10,7 +10,7 @@
     path: /media/{{ loop_item | lower }}
     src: "LABEL={{ loop_item }}"
     boot: False
-    opts: "user,nofail"
+    opts: "user,nofail,{{ device_type.option }}"
     fstype: "{{ device_type.value }}"
     state: present
   ignore_errors: True
@@ -28,3 +28,14 @@
   with_items: "{{ result_1.stdout_lines }}"
   loop_control:
     loop_var: device_item
+
+- name: "Set fsck on boot  {{ result_1}}"
+  cron:
+    name: "sudo dosfsck -w -r -l -a -v -t /dev/{{ device_item }}"
+    special_time: reboot
+    job: "sudo dosfsck -w -r -l -a -v -t /dev/{{ device_item }} >/dev/null 2>&1"
+  with_items: "{{ result_1.stdout_lines }}"
+  loop_control:
+    loop_var: device_item
+
+

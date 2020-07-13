@@ -20,8 +20,8 @@
 - name: "mount all types"
   include_tasks: mount.yaml  
   with_items:
-  - { code: "0x7", value: "exfat" }
-  - { code: "0xc", value: "vfat" }
+  - { code: "0x7", value: "exfat", option: 'ro' }
+  - { code: "0xc", value: "vfat", option: '' }
   loop_control:
     loop_var: device_type
 
