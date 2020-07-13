@@ -53,8 +53,9 @@
     name: "mopidy local scan"
     minute: "0"
     hour: "12"
-    job: "sudo mopidyctl local scan >/dev/null 2>&1"
- 
-- name: "execute manully"
+    job: "sudo mopidyctl local scan >/dev/null 2>&1"  
+
+- name: "execute manual mopidyctl local scan"
   debug:
     msg: "sudo mopidyctl local scan"
+  notify: scan mopidy
