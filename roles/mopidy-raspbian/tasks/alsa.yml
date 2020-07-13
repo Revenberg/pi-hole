@@ -11,10 +11,11 @@
     dest: /etc/rc.local
   notify: play wav sound
 
-- name: Fixing audio quality issues
-  copy:
-    src: asound.conf
+- name: "copy asound.conf"  
+  template:
+    src: templates/asound.conf.j2
     dest: /etc/asound.conf
+    mode: '0775'
 
 - name: alsasink
   ini_file:
