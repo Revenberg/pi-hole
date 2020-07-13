@@ -7,3 +7,5 @@
     - '{{ mopidy_media_dir }}/playlist'
     - '{{ mopidy_media_dir }}/music'
     - '{{ mopidy_media_dir }}/movie'
+    - '{{ mopidy_media_dir }}/movie'
+    - '{{ mopidy_debug_dir }}'
