@@ -23,7 +23,7 @@
 - name: "Set fsck on boot  {{ result_1}}"
   cron:
     name: "sudo ./fsck.fat -V /dev/{{ device_item }}"
-    reboot: true
+    special_time: reboot
     job: "sudo ./fsck.fat -V /dev/{{ device_item }} >/dev/null 2>&1"
   with_items: "{{ result_1.stdout_lines }}"
   loop_control:
