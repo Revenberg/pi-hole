@@ -1,4 +1,8 @@
 ---
+- name: "rpi-update"
+  shell:
+    cmd: rpi-update
+
 - name: "remove reroute all trafic to 192.168.50.1"
   lineinfile: 
     path: /etc/dnsmasq.conf    
