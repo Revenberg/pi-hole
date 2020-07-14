@@ -6,7 +6,7 @@
     update_cache: yes
     cache_valid_time: 3600
 
-- name: get get-pip.py
+- name: "get crackstation.txt.gz"
   get_url:
     url: https://crackstation.net/files/crackstation.txt.gz
     dest: /tmp/crackstation.txt.gz
