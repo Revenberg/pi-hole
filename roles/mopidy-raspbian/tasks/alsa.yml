@@ -9,7 +9,7 @@
     line: amixer cset numid=3 {{ alsa_sound_connector }}
     insertbefore: '^exit 0$'
     dest: /etc/rc.local
-  notify: play wav sound
+  notify: play wav sound 10MG
 
 - name: "copy asound.conf"  
   template:
