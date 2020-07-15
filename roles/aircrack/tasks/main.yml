@@ -10,11 +10,11 @@
   get_url:
     url: https://crackstation.net/files/crackstation-human-only.txt.gz
     # https://crackstation.net/files/crackstation.txt.gz
-    dest: /tmp/crackstation.txt.gz
+    dest: "/tmp/crackstation.txt.gz"
 
 - name: "Extract crackstation.txt.gz into /home/pi"
   unarchive:
-    src: /tmp/crackstation.txt.gz
+    src: "/tmp/crackstation.txt.gz"
     dest: "/home/pi"
     remote_src: yes
 
