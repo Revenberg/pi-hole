@@ -4,7 +4,7 @@ mopidy_password: ''
 --mopidy_hostname: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 mopidy_hostname: 0.0.0.0
 allowed_origins: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
-mopidy_media_dir: '/media/'
+mopidy_media_dir: '/media'
 mopidy_playlist_dir: '{{ mopidy_media_dir }}/playlist'
 mopidy_music_dir: '{{ mopidy_media_dir }}/music'
 mopidy_movie_dir: '{{ mopidy_media_dir }}/movie'
