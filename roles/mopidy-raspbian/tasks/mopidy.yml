@@ -54,6 +54,6 @@
     minute: "0,15,30,45"
     job: "sudo mopidyctl local scan >/dev/null 2>&1"  
   
-- name: "execute manual mopidyctl local scan"
-  debug:
-    msg: "sudo mopidyctl local scan"  
+- name: scan mopidy
+  shell:
+    cmd: "sudo mopidyctl local scan"
