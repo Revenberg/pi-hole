@@ -19,7 +19,9 @@
 
 - name: "smbpasswd -a pi"
   shell:
-    cmd: "echo '{{ pi_passwrd }}' | tee - | smbpasswd -a pi -s"
+    cmd: "echo '{{ pi_passwrd }}';echo '{{ pi_passwrd }}' | sudo smbpasswd -s -a pi"
+  register: smbpasswd
+  changed_when: "'Added user' in smbpasswd.stdout"
 
 - name: "systemctl started smbd"
   systemd:
