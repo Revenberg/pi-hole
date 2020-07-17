@@ -39,8 +39,9 @@ mopidy_settings:
   - { section: 'local', option: 'media_dir', value: '{{ mopidy_media_dir }}' }
   - { section: 'local', option: 'library', value: 'sqlite' }
   - { section: 'local', option: 'scan_timeout', value: '60000' }
-  - { section: 'local', option: 'scan_flush_threshold', value: '100' }
+  - { section: 'local', option: 'scan_flush_threshold', value: '50' }
   - { section: 'local', option: 'scan_follow_symlinks', value: 'true' }
+  - { section: 'local', option: 'excluded_file_extensions', value: '.mp4' }
   - { section: 'file', option: 'enabled', value: 'true' }
   - { section: 'file', option: 'media_dirs', value: '{{ mopidy_media_dir }}' }
   - { section: 'mobile', option: 'enabled', value: 'true' }
