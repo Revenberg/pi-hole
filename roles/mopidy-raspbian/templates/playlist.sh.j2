@@ -15,11 +15,10 @@ function playlist {
     do
      if [[ ! "$filename" =~ "*.mp3" ]];
      then
-        name1=$( ls -1 -b "{{ mopidy_playlist_dir }}/$subdir")
+        name1=$( ls -1 -b "$filename")
         #name1=$( echo "${subdir##*/}" | iconv -f utf8 -t ascii//TRANSLIT//IGNORE | sed 's/[^a-zA-Z 0-9]//g' )
-        echo $name1
-        echo "$filename" >> "{{ mopidy_playlist_dir }}/$name1.m3u"
-        echo "$filename" >> "{{ mopidy_playlist_dir }}/$name2.m3u"
+        echo "$name1" >> "{{ mopidy_playlist_dir }}/$name1.m3u"
+        echo "$name1" >> "{{ mopidy_playlist_dir }}/$name2.m3u"
      fi
     done
   done
