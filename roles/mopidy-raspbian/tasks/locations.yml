@@ -9,3 +9,4 @@
     - '{{ mopidy_media_dir }}/movie'
     - '{{ mopidy_media_dir }}/movie'
     - '{{ mopidy_debug_dir }}'
+    

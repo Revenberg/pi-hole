@@ -52,10 +52,10 @@
   cron:
     name: "mopidy local scan"
     minute: "0,15,30,45"
-    job: "sudo mopidyctl local scan >/dev/null 2>&1"  
+    job: "sudo mopidyctl local scan > {{ mopidy_debug_dir }}/local.scan.log 2>&1"  
   
 - name: "scan mopidy on reboot"
   cron:
     name: "mopidy local scan on reboot"
     special_time: reboot
-    job: "sudo mopidyctl local scan >/dev/null 2>&1"  
+    job: "sudo mopidyctl local scan > {{ mopidy_debug_dir }}/local.scan.log 2>&1"  
