@@ -22,7 +22,7 @@
 
 - name: "smbpasswd -a pi"
   shell:
-    cmd: "echo '{{ pi_password }}';echo '{{ pi_password }}' | sudo smbpasswd -s -a pi"
+    cmd: "(echo '{{ pi_password }}';echo '{{ pi_password }}') | sudo smbpasswd -s -a pi"
   register: smbpasswd
   changed_when: "'Added user' in smbpasswd.stdout"
 
