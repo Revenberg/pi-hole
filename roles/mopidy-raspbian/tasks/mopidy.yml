@@ -51,7 +51,7 @@
 - name: "mopidy local scan runs on 4 times a hour"
   cron:
     name: "mopidy local scan"
-    minute: "0,15,30,45"
+    minute: "0"
     job: "sudo mopidyctl local scan > {{ mopidy_debug_dir }}/local.scan.log 2>&1"  
   
 - name: "scan mopidy on reboot"
