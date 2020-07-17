@@ -1,0 +1,28 @@
+---
+- name: "install apt-get packages"
+  apt: 
+    name: [ "samba", "samba-common-bin" ]
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Creates directory
+  file:
+    path: /media
+    state: directory
+    mode: 0777
+
+- name: "copy smb.conf"
+  copy:
+    src: smb.conf
+    dest: /etc/samba/smb.conf
+
+- name: "smbpasswd -a pi"
+  shell:
+    cmd: "echo '{{ pi_passwrd }}' | tee - | smbpasswd -a pi -s"
+
+- name: "systemctl started smbd"
+  systemd:
+    state: started
+    enabled: yes
+    name: smbd
