@@ -16,12 +16,9 @@
   copy:
     src: smb.conf
     dest: /etc/samba/smb.conf
-    
-- set_fact:
-    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
 
 - set_fact:
-    pi_passwrd: "{{ pi_password | password_hash('sha512' ) }}"
+    pi_password: "{{lookup('file', '{{ pswrdfile }}') }}"
 
 - name: "smbpasswd -a pi"
   shell:
