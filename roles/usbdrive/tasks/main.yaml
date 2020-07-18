@@ -5,7 +5,8 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-
+  ignore_errors: True
+  
 - name: "set mount flag 1"
   replace:
     path: /lib/systemd/system/systemd-udevd.service

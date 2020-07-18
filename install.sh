@@ -61,6 +61,9 @@ cd ~/pi-hole
 git pull
 cd ~
 
+cp ./pi-hole/usb.sh ~/usb.sh
+chmod +x ~/usb.sh
+
 cp ./pi-hole/install.sh ~/install.sh
 chmod +x ~/install.sh
 
